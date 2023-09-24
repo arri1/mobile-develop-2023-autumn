@@ -4,7 +4,7 @@
  *
  * @format
  */
-
+/*
 import React from 'react';
 import type {PropsWithChildren} from 'react';
 import {
@@ -116,3 +116,23 @@ const styles = StyleSheet.create({
 });
 
 export default App;
+*/
+
+///
+
+import React from 'react';
+import {Text, View} from 'react-native';
+
+const HelloWorldApp = () => {
+  return (
+    <View
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}>
+      <Text>Evseev Sergey</Text>
+    </View>
+  );
+};
+export default HelloWorldApp;
