@@ -1,44 +1,37 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { useState } from 'react';
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { useState } from "react";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { NavigationContainer } from "@react-navigation/native";
+import Lab1 from "./screens/Lab1";
+import Lab2 from "./screens/Lab2";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
+const Tab = createBottomTabNavigator();
 export default function App() {
-  const [count: number,setCount]= useState(0)
   return (
-    <View style={styles.container}>
-      <Text style={{fontSize:30, marginBottom: 15,}}>{count}</Text>
-      <TouchableOpacity style={styles.buttonGray} onPress={() => setCount(count + 5)}>
-          <Text>Button +5</Text>
-      </TouchableOpacity>
+    <NavigationContainer>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconColor, iconName;
 
-      <TouchableOpacity style={styles.buttonGray} onPress={() => setCount(count + 10)}>
-          <Text>Button +10</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity style={styles.buttonGray} onPress={() => setCount(count - 3)}>
-          <Text>Button -3 </Text>
-      </TouchableOpacity>
-
-      <StatusBar style="auto" />
-    </View>
+            if (route.name === "Lab1") {
+              iconName = "book";
+              iconColor = "gray";
+            } else if (route.name === "Lab2") {
+              iconName = "book-outline";
+              iconColor = "black";
+            }
+            return <Ionicons name={iconName} size={32} color={iconColor} />;
+          },
+          tabBarActiveTintColor: "rgb(	173, 216, 230)",
+          tabBarInactiveTintColor: "gray",
+        })}
+      >
+        <Tab.Screen name="Lab1" component={Lab1} />
+        <Tab.Screen name="Lab2" component={Lab2} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-   
-  },
-  buttonGray: {
-    marginBottom: 10,
-    height:50, 
-    borderRadius:10,
-    width:100,
-    alignItems:'center',
-    backgroundColor:'gray',
-    justifyContent:'center'
-  },
-});
