@@ -24,9 +24,6 @@ export default function Screen2() {
 	return (
 		<View>
 			<Text>API CALL</Text>
-
-			<Button color="#aa5a" title="Добавить" />
-
 			<View>
 				<FlatList
 					data={data}
