@@ -1,61 +1,59 @@
 import { useMemo, useState } from "react";
-import { Button, Text, View } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
+import Button from "../Components/Button";
 
-const Lab3 = () => {
-    const [count, setCount] = useState(1);
 
-const list = [1, 4, 3, 2, 5];
-const list2 = [1, 4, 3, 2, 5];
-let sortCount = 0;
-let sortCountUM = 0;
-const sortList = () => {
-  console.log("sort");
-  sortCount++;
-  return list.sort((a, b) => a - b);
-};
-
-const sortList2 = () => {
-  console.log("sort2");
-  sortCountUM++;
-  return list2.sort((a, b) => a - b);
+const expensiveFunction = () => {
+  let i = 0;
+  while (i < 50000000) i++;
+  return i;
 };
 
 const Lab3 = () => {
-  const [update, updateChange] = useState(false);
-
-  const sortedList = sortList();
-  const sortedList2 = useMemo(sortList2, []);
-
-  console.log("app render");
+  const [memoNum, setMemoNum] = useState(0);
+  const [num, setNum] = useState(0);
+  const memoizeExpensiveFunction = useMemo(
+    () => expensiveFunction("fromUseMemo"),
+    []
+  );
+  const memoIterate = () => {
+    setMemoNum(memoizeExpensiveFunction);
+  };
+  const iterate = () => {
+    setNum(expensiveFunction("iterate without memo"));
+  };
+  const resetState = () => {
+    setNum(0);
+    setMemoNum(0);
+  };
   return (
-    <View>
-      <View>
-        {sortedList.map((listItem) => (
-          <Text key={listItem}>{listItem}</Text>
-        ))}
-        <Text>Count of sort without useMemo: {sortCount}</Text>
+    <View style={styles.container}>
+      <View style={styles.container2}> 
+      <Text>Hard solve with memo: {memoNum}</Text>
+      <Button title={"Yes Memo"} onPress={memoIterate} />
+      <Text>Hard solve with NO usememo: {num}</Text>
+      <Button title={"NO Memo"} onPress={iterate} />
+      <Button title={"Clear"} onPress={resetState} />
       </View>
-      <View>
-        {sortedList2.map((listItem) => (
-          <Text key={listItem}>{listItem}</Text>
-        ))}
-        <Text>Count of sort with useMemo: {sortCountUM}</Text>
-      </View>
-      <Button onPress={() => updateChange(!update)} title={"update change"} />
     </View>
   );
-
-  // return (
-  //   <View>
-  //     <View>
-  //       {sortedList.map((listItem) => (
-  //         <Text key={listItem}>{listItem}</Text>
-  //       ))}
-  //     </View>
-  //     <Button onPress={() => updateChange(!update)} title={"update change"} />
-  //   </View>
-  // );
 };
-}
+const styles = StyleSheet.create({
+  container: {
+    justifyContent: "normal",
+    alignItems: "center",
+    flex: 1,
+    gap: 10,
+    backgroundColor: "rgb(240, 221, 150)",
+  },
+  container2: {
+    marginTop: 30,
+    justifyContent: "normal",
+    alignItems: "center",
+    flex: 1,
+    gap: 10,
+    
+  },
+});
 
 export default Lab3;

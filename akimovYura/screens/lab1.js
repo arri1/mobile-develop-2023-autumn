@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flex: 1,
     gap: 10,
-    backgroundColor: "#FFEFDF",
+    backgroundColor: "rgb(240, 221, 150)",
   },
   text: {
     color: "green", 

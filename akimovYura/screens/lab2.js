@@ -41,7 +41,7 @@ const Lab2 = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "rgb(240, 221, 150)",
     padding: 20,
   },
   header: {
