@@ -9,7 +9,6 @@ import {
   ScrollView,
 } from "react-native";
 
-import * as Font from "expo-font";
 
 export default function Stories(storiess) {
   const [stories, setStories] = useState(
@@ -46,6 +45,7 @@ export default function Stories(storiess) {
 
 const styles = StyleSheet.create({
   Stories: {
+    marginTop:15,
     width: "100%",
     height: 114,
   },

@@ -1,9 +1,12 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { increment, decrement } from "../Redux/numSlice";
 
 export default function Lab1() {
-  const [count, setCount] = useState(0);
+  const count = useSelector((state) => state.count.value);
+  const dispatch = useDispatch();
+
   return (
     <View style={[styles.container]}>
       <Text style={{ fontSize: 50, fontFamily: "Verdana" }}>{count}</Text>
@@ -11,20 +14,16 @@ export default function Lab1() {
       <View style={styles.buttonsContainer}>
         <TouchableOpacity
           style={styles.buttonGray}
-          onPress={() => setCount(count - 10)}
+          onPress={() => dispatch(decrement())}
         >
-          <Text style={{ fontSize: 25, fontFamily: "Verdana" }}>-10</Text>
+          <Text style={{ fontSize: 25, fontFamily: "Verdana" }}>-5</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={styles.buttonGray}
-          onPress={() => setCount(count + 10)}
+          onPress={() => dispatch(increment())}
         >
-          <Text style={{ fontSize: 25, fontFamily: "Verdana" }}>+10</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.buttonGray} onPress={() => setCount(0)}>
-          <Text style={{ fontSize: 25, fontFamily: "Verdana" }}>Reset</Text>
+          <Text style={{ fontSize: 25, fontFamily: "Verdana" }}>+5</Text>
         </TouchableOpacity>
       </View>
 
@@ -36,7 +35,7 @@ export default function Lab1() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "orange",
+    backgroundColor: "lightblue",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -53,6 +52,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "gray",
     justifyContent: "center",
-    backgroundColor: "lightblue",
+    backgroundColor: "orange",
   },
 });

@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     justifyContent: "space-between",
-    paddingBottom: 10,
+    paddingBottom: 20,
     backgroundColor: "#fff",
   },
   lent: {

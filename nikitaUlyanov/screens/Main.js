@@ -32,7 +32,6 @@ export default function Main({ navigation, route }) {
     <View style={styles.main}>
       <StatusBar style="auto" />
 
-      <Text>{}</Text>
       <Stories storiess={storiess} />
 
       <Lent post={postss} />
@@ -47,16 +46,8 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     justifyContent: "space-between",
-    paddingBottom: 10,
+    paddingBottom: 20,
     backgroundColor: "#fff",
-  },
-  footer: {
-    height: 64,
-    width: "100%",
-    justifyContent: "space-around",
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: "white",
   },
   title: {
     marginLeft: 20,

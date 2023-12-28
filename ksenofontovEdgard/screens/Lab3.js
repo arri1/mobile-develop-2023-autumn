@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
   scrollview: {
     flex: 1,
     height: "100%",
-    backgroundColor: "f0f0f0",
+    backgroundColor: "gray",
   },
   containerLoading: {
     flex: 1,
@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "white",
+    backgroundColor: "lightgray",
   },
   image: {
     maxWidth: "40%",

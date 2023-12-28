@@ -37,7 +37,7 @@ export default function Lab2() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "rgba(204, 153, 204)",
+    backgroundColor: "gray",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "lightblue",
+    backgroundColor: "lightgray",
   },
   text: {
     marginTop: 15,

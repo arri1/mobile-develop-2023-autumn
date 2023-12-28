@@ -12,15 +12,20 @@
     "@expo/webpack-config": "^19.0.0",
     "@react-navigation/bottom-tabs": "^6.5.9",
     "@react-navigation/native": "^6.1.8",
+    "@react-navigation/native-stack": "^6.9.17",
+    "@reduxjs/toolkit": "^2.0.1",
     "expo": "~49.0.13",
     "expo-status-bar": "~1.6.0",
+    "firebase": "^10.7.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-native": "0.72.6",
-    "react-native-web": "~0.19.6"
+    "react-native-web": "~0.19.6",
+    "react-redux": "^9.0.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0"
+    "@babel/core": "^7.20.0",
+    "react-router-dom": "^6.21.1"
   },
   "private": true
 }
