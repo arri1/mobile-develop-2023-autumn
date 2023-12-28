@@ -7,7 +7,7 @@ import Lab2 from "../screens/Lab2";
 import Lab3 from "../screens/Lab3";
 import Lab5 from "../screens/Lab5";
 import SignOut from "./SignOut";
-import ChangePasswordScreen from "../screens/ChangePasswordScreen"
+import ChangePasswordScreen from "../screens/ChangePasswordScreen";
 
 const Tab = createBottomTabNavigator();
 
