@@ -2,7 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { useState, useEffect } from "react";
 
-export default function Lab1() {
+export default function Lab2() {
   const [chuck, setChuck] = useState({});
 
   const getJoke = () => {
