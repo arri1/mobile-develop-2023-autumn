@@ -10,21 +10,20 @@ const Lab5 = () => {
   return (
     <View style={styles.container}>
       <Text>{ count }</Text>
-      <View style={styles.buttons}>
-        <Button
-            onPress={() => {
-            store.dispatch({ type: 'INCREMENT' });
-            }}
-            title={"Increment"}
-        />
-        <View style={styles.space}></View>
-        <Button
-            onPress={() => {
-            store.dispatch({ type: 'DECREMENT' });
-            }}
-            title={"Decrement"}
-        />
-      </View>
+      <View style={styles.space}></View>
+      <Button
+          onPress={() => {
+          store.dispatch({ type: 'INCREMENT' });
+          }}
+          title={"Increment"}
+      />
+      <View style={styles.space}></View>
+      <Button
+          onPress={() => {
+          store.dispatch({ type: 'DECREMENT' });
+          }}
+          title={"Decrement"}
+      />
     </View>
   );
 }
@@ -35,7 +34,6 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: '#ecf0f1',
-        alignItems:'center'
     },
     buttons: {
         justifyContent: 'center',
