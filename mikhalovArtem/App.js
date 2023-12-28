@@ -1,85 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, Button, FlatList, StyleSheet } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-const TodoList = () => {
-  const [todoInput, setTodoInput] = useState('');
-  const [todos, setTodos] = useState([]);
+// Импорт компонентов из файлов Lab2 и Lab3
+import Lab1 from './screens/lab1';
+import Lab2 from './screens/lab2';
 
-  const addTodo = () => {
-    if (todoInput === '') return;
+// Создание нижнего навигатора
+const Tab = createBottomTabNavigator();
 
-    setTodos([...todos, todoInput]);
-    setTodoInput('');
-  };
-
-  const deleteTodo = (index) => {
-    const newTodos = [...todos];
-    newTodos.splice(index, 1);
-    setTodos(newTodos);
-  };
-
-  useEffect(() => {
-    // Этот эффект будет вызываться каждый раз, когда происходит изменение в состоянии todos
-    console.log('todos changed:', todos);
-  }, [todos]);
-
+function App() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>To-Do List</Text>
-      
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          placeholder="Введите задачу"
-          value={todoInput}
-          onChangeText={(text) => setTodoInput(text)}
-        />
-        <Button title="Добавить" onPress={addTodo} />
-      </View>
-
-      <FlatList
-        data={todos}
-        renderItem={({ item, index }) => (
-          <View style={styles.todoContainer}>
-            <Text style={styles.todoText}>{item}</Text>
-            <Button title="Удалить" onPress={() => deleteTodo(index)} />
-          </View>
-        )}
-        keyExtractor={(item, index) => index.toString()}
-      />
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name="Lab1" component={Lab1} />
+        <Tab.Screen name="Lab2" component={Lab2} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
-};
+}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
-  },
-  inputContainer: {
-    flexDirection: 'row',
-  },
-  input: {
-    flex: 1,
-    height: 40,
-    borderWidth: 1,
-    marginRight: 10,
-    paddingHorizontal: 10,
-  },
-  todoContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 10,
-  },
-  todoText: {
-    flex: 1,
-    fontSize: 16,
-  },
-});
-
-export default TodoList;
+export default App;
