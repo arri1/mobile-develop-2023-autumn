@@ -40,12 +40,12 @@ export function Lab3Stack() {
 export default function TabNav() {
   return (
     <Tab.Navigator>
-      <Tab.Screen name={"lab1"} component={Lab1}></Tab.Screen>
-      <Tab.Screen name={"lab2"} component={Lab2}></Tab.Screen>
-      <Tab.Screen name={"lab3"} component={Lab3Stack}></Tab.Screen>
-      <Tab.Screen name={"lab5"} component={Lab5}></Tab.Screen>
-      <Tab.Screen name={"logout"} component={SignOut}></Tab.Screen>
-      <Tab.Screen name={"change"} component={ChangePassword}></Tab.Screen>
+      <Tab.Screen name={"lab1"} component={Lab1} />
+      <Tab.Screen name={"lab2"} component={Lab2} />
+      <Tab.Screen name={"lab3"} component={Lab3Stack} />
+      <Tab.Screen name={"lab5"} component={Lab5} />
+      <Tab.Screen name={"logout"} component={SignOut} />
+      <Tab.Screen name={"change"} component={ChangePassword} />
     </Tab.Navigator>
   );
 }
