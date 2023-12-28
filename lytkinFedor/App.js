@@ -15,6 +15,9 @@ import lab2 from "./labs/lab2";
 import lab3 from "./labs/lab3";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import SignUp from "./auth/SignUp";
+import SignIn from "./auth/SignIn";
+import AuthDetails from "./auth/AuthDetails";
 
 AppRegistry.registerComponent("MyApp", () => require("./App"));
 
@@ -92,6 +95,8 @@ export default function App() {
         <Tab.Screen name="Home" component={HomeScreen} />
         <Tab.Screen name="News" component={lab2} options={{ tabBarBadge: 3 }} />
         <Tab.Screen name="UseMemo" component={lab3} />
+        <Tab.Screen name="SignUp" component={SignUp} />
+        <Tab.Screen name="SignIn" component={SignIn} />
       </Tab.Navigator>
     </NavigationContainer>
   );
