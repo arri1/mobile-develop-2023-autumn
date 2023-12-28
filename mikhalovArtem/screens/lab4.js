@@ -5,7 +5,6 @@ import { useNavigation } from '@react-navigation/native';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import 'firebase/auth';
 
-// Конфигурация Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyBJw3oK3zMucs51G_ik94kSpPzpyhBBShs",
     authDomain: "abcq-148d2.firebaseapp.com",
@@ -16,7 +15,6 @@ const firebaseConfig = {
     measurementId: "G-Z7DS3HQT3L"
 };
 
-// Инициализация Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
@@ -28,7 +26,6 @@ const AuthComponent = () => {
   const handleSignUp = async () => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      // Обработка успешной регистрации
     } catch (error) {
       setError(error.message);
     }
@@ -37,8 +34,7 @@ const AuthComponent = () => {
   const handleSignIn = async () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      // Обработка успешного входа
-      navigation.navigate("Lab3");
+      navigation.navigate("Lab1");
     } catch (error) {
       setError(error.message);
     }
