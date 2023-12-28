@@ -7,6 +7,7 @@ import Lab2 from "../screens/Lab2";
 import Lab3 from "../screens/Lab3";
 import Lab5 from "../screens/Lab5";
 import SignOut from "./SignOut";
+import ChangePasswordScreen from "../screens/ChangePasswordScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -57,6 +58,10 @@ const TabNavigator = () => {
             iconName = focused
               ? "ios-information-circle"
               : "ios-information-circle-outline";
+          } else if (route.name == "Смена пароля") {
+            iconName = focused
+              ? "ios-information-circle"
+              : "ios-information-circle-outline";
           } else if (route.name == "Выйти") {
             iconName = focused
               ? "ios-information-circle"
@@ -89,6 +94,11 @@ const TabNavigator = () => {
         name="Лабораторная работа 5"
         component={Lab5}
         options={{ tabBarLabel: "5" }}
+      />
+      <Tab.Screen
+        name="Смена пароля"
+        component={ChangePasswordScreen}
+        options={{ tabBarLabel: "Пароль" }}
       />
       <Tab.Screen
         name="Выйти"
