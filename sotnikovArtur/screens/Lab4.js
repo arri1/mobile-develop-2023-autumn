@@ -1,9 +1,10 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { increment, decrement } from "../Redux/numSlice";
 
-export default function Lab1() {
+export default function Lab4() {
   const count = useSelector((state) => state.count.value);
   const dispatch = useDispatch();
 
