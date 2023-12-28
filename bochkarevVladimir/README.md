@@ -1,0 +1,1 @@
+https://www.figma.com/file/jwkfZZV8LrJ9Yhc3AyqFHf/bochkarevVladimir?type=design&node-id=0-1&mode=design&t=5zEftY9LMJHtrD8j-0
