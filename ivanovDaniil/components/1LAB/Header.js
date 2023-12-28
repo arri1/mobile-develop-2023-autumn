@@ -13,23 +13,20 @@ import React from "react";
 export default function Header() {
 	return (
 		<View style={styles.main}>
-			<Text style= {styles.text}>ToDo'шка</Text>
+			<Text style={styles.text}>ToDo'шка</Text>
 		</View>
 	);
 }
-
 
 const styles = StyleSheet.create({
 	main: {
 		height: 50,
 		backgroundColor: "black",
 		paddingTop: 1,
-		
 	},
 	text: {
 		fontSize: 18,
 		color: "#ff4f",
 		textAlign: "center",
-
-	}
+	},
 });
