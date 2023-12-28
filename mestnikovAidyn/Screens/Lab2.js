@@ -1,6 +1,8 @@
-import { StatusBar } from 'expo-status-bar';
+
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { useState, useEffect} from "react";
+import Button from "../components/Button";
+
 
 
 export default function App() {
@@ -14,22 +16,22 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>{calculation}</Text>
-      <TouchableOpacity style={styles.button}
+      <Button
+          title="Calc"
           onPress={() => {
             setCount((c) => c + 1);
           }}>
-        <Text style={styles.text}>Calc</Text>
-      </TouchableOpacity>
+      </Button>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: "end",
+    justifyContent: "center",
     alignItems: "center",
     flex: 1,
-    backgroundColor: '#696969',
+    backgroundColor: 'white',
     gap: 10,
   },
   text: {
