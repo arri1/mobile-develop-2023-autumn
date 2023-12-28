@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import lab1 from "./lab1";
 import lab2 from "./lab2";
+import lab3 from "./lab3";
+import SignOut from "./lab4SignOut";
 
 const Tab = createBottomTabNavigator();
 
@@ -46,6 +48,12 @@ const TabNavigator = () => {
         options={{ tabBarBadge: counter > 0 ? counter : null }}
       />
       <Tab.Screen name="lab2" component={lab2} />
+      <Tab.Screen name="lab3" component={lab3} />
+      <Tab.Screen
+        name="Выйти"
+        component={SignOut}
+        options={{ tabBarLabel: "Выйти" }}
+      />
     </Tab.Navigator>
   );
 };
