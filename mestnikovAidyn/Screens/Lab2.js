@@ -5,15 +5,21 @@ import { useState, useEffect} from "react";
 
 export default function App() {
   const [count, setCount] = useState(0);
+  const [calculation, setCalculation] = useState(0);
 
   useEffect(() => {
-    setTimeout(() => {
-      setCount((count) => count + 1);
-    }, 1000);
-  });
+    setCalculation(() => count * 2);
+  }, [count]);
+
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{count}</Text>
+      <Text style={styles.text}>{calculation}</Text>
+      <TouchableOpacity style={styles.button}
+          onPress={() => {
+            setCount((c) => c + 1);
+          }}>
+        <Text style={styles.text}>Calc</Text>
+      </TouchableOpacity>
     </View>
   );
 }

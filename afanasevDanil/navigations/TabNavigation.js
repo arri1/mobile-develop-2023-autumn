@@ -50,8 +50,7 @@ const TabNavigation = () => (
     <Tab.Screen
       name="Lab2"
       component={Lab2}
-      o
-      ptions={{
+      options={{
         tabBarIcon: ({ color, size }) => (
           <Image
             source={require("./iconic.png")}

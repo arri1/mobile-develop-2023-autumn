@@ -106,6 +106,7 @@ const styles = StyleSheet.create({
     width: '100%',
     padding: 5,
     alignItems: 'center',
+    borderRadius: 30,
   },
   buttonOutline: {
     backgroundColor: 'white',

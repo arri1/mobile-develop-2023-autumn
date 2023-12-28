@@ -37,9 +37,21 @@ const Lab3 = () => {
         justifyContent: "center",
       }}
     >
-      <Text>Результат сложного вычисления: {memoNum}</Text>
+      <Text
+        style={{
+          marginBottom: 10,
+        }}
+      >
+        Результат сложного вычисления: {memoNum}
+      </Text>
       <Button title={"Вычислить с Memo"} onPress={memoIterate} />
-      <Text>Результат сложного вычисления без usememo: {num}</Text>
+      <Text
+        style={{
+          marginBottom: 10,
+        }}
+      >
+        Результат сложного вычисления без usememo: {num}
+      </Text>
       <Button title={"Вычислить без Memo"} onPress={iterate} />
       <Button title={"Обнулить"} onPress={resetState} />
     </View>

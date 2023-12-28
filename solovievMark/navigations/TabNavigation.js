@@ -5,6 +5,7 @@ import Lab1 from "../screens/lab1";
 import Lab2 from "../screens/lab2";
 import Lab3 from "../screens/lab3";
 import Settings from "../screens/Settings";
+import Redux from "../screens/Redux";
 const Tab = createBottomTabNavigator();
 
 const TabNavigation = () => {
@@ -56,6 +57,7 @@ const TabNavigation = () => {
           },
         }}
       />
+      <Tab.Screen name="Redux" component={Redux} />
       <Tab.Screen name="Settings" component={Settings} />
     </Tab.Navigator>
   );

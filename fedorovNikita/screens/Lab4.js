@@ -1,12 +1,13 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, TextInput } from "react-native";
 import Button from "../components/Button";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 
 import { auth } from "../firebase";
 
 const Lab4 = () => {
   const navigation = useNavigation();
+  const [newPassword, setNewPassword] = useState('');
 
   const handleLogout = () => {
     auth
@@ -19,13 +20,38 @@ const Lab4 = () => {
       });
   };
 
+  const handleChangePassword = () => {
+    const user = auth.currentUser;
+
+    if (user) {
+      user.updatePassword(newPassword)
+        .then(() => {
+          alert('Success', 'Password updated successfully!');
+        })
+        .catch((error) => {
+          alert('Error', `Failed to update password: ${error.message}`);
+        });
+    } else {
+      alert('Error', 'User not authenticated');
+    }
+  };
+
   return (
     <View style={styles.container}>
-      <Text>Email: {auth.currentUser?.email}</Text>
+      <Text>Email: {auth.currentUser?.email} </Text>
       <Button
         onPress={handleLogout}
         title={"Logout"}
       />
+      <View style={styles.space}></View>
+      <Text>Enter new password:</Text>
+      <TextInput
+        secureTextEntry
+        value={newPassword}
+        onChangeText={setNewPassword}
+      />
+      <View style={styles.space}></View>
+      <Button title="Change Password" onPress={handleChangePassword} />
     </View>
   );
 }
@@ -38,6 +64,13 @@ const styles = StyleSheet.create({
     padding: 8,
     flexDirection:'column',
     alignItems:'center'
+  },
+  textinput: {
+    borderColor: '#ecf0f1',
+  },
+  space: {
+    width: 20,
+    height: 20,
   },
 });
 

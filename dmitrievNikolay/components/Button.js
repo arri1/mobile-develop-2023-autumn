@@ -6,11 +6,11 @@ const Button = ({ onPress, title, loading }) => {
       disabled={loading}
       style={{
         marginTop: 10,
-        height: 20,
-        width: 100,
+        height: 40,
+        width: 120,
         alignItems: "center",
         justifyContent: "center",
-        borderRadius: 14,
+        borderRadius: 30,
         backgroundColor: "#171E2B",
       }}
       onPress={onPress}

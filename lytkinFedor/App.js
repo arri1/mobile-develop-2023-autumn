@@ -1,20 +1,35 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, TouchableOpacity, Button } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Button,
+  SafeAreaView,
+  AppRegistry,
+} from "react-native";
 import { useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import lab2 from "./labs/lab2";
 import lab3 from "./labs/lab3";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import Ionicons from "react-native-vector-icons/Ionicons";
+
+AppRegistry.registerComponent("MyApp", () => require("./App"));
 
 function HomeScreen() {
   const [count, setCount] = useState(0);
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text style={styles2.sectionTitle}>Hello World!</Text>
-      <Text>Lytkin Fedor FIIT-20</Text>
+    <SafeAreaView style={styles.fullScreen}>
+      <View style={styles.titleTextContainer}>
+        <Text style={styles.symbolText}>Hello World!</Text>
+        <Text style={styles.symbolTextSmall}>Lytkin Fedor FIIT-20</Text>
+      </View>
       <View style={styles.container}>
-        <Text style={{ fontSize: 30, marginBottom: 15 }}>{count}</Text>
+        <Text style={styles.counterFont}>{count}</Text>
+      </View>
+      <View style={styles.buttonContainer}>
         <TouchableOpacity
           style={styles.roundButtonNumber}
           onPress={() => setCount(count + 1)}
@@ -45,7 +60,7 @@ function HomeScreen() {
       </View>
 
       <StatusBar />
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -54,43 +69,47 @@ const Tab = createBottomTabNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName;
+
+            if (route.name === "Home") {
+              iconName = focused ? "home" : "home-outline";
+            } else if (route.name === "News") {
+              iconName = focused ? "ios-list" : "ios-list-outline";
+            } else if (route.name === "UseMemo") {
+              iconName = focused ? "calculator" : "calculator-outline";
+            }
+
+            // You can return any component that you like here!
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
+          tabBarActiveTintColor: "tomato",
+          tabBarInactiveTintColor: "gray",
+        })}
+      >
         <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="ToDo" component={lab2} />
+        <Tab.Screen name="News" component={lab2} options={{ tabBarBadge: 3 }} />
         <Tab.Screen name="UseMemo" component={lab3} />
       </Tab.Navigator>
     </NavigationContainer>
   );
 }
 
-const styles2 = StyleSheet.create({
-  container: {
-    margin: 20,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: "600",
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: "400",
-  },
-  highlight: {
-    fontWeight: "700",
-  },
-});
-
 const styles = StyleSheet.create({
-  container: {
+  fullScreen: {
     alignItems: "center",
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  screen: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+  },
+  buttonContainer: {
+    position: "absolute",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    bottom: 20,
+  },
+  container: {
+    padding: 60,
   },
   roundButtonNumber: {
     margin: 1,
@@ -102,40 +121,16 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     backgroundColor: "#D2CCC7",
   },
-  roundButtonSign: {
-    margin: 1,
-    width: 100,
-    height: 100,
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 10,
-    borderRadius: 100,
-    backgroundColor: "#906A4B",
-  },
-  roundButtonFunc: {
-    margin: 1,
-    width: 100,
-    height: 100,
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 10,
-    borderRadius: 100,
-    backgroundColor: "#5F6363",
-  },
-  roundButtonZero: {
-    marginTop: 1,
-    width: 200,
-    height: 100,
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 10,
-    borderRadius: 100,
-    backgroundColor: "#D2CCC7",
+  titleTextContainer: {
+    padding: 60,
   },
   symbolText: {
-    fontSize: 50,
+    fontSize: 60,
   },
   symbolTextSmall: {
-    fontSize: 30,
+    fontSize: 15,
+  },
+  counterFont: {
+    fontSize: 200,
   },
 });

@@ -38,7 +38,11 @@ const TodoListScreen = () => {
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
           <View>
-            <Text>Text: {item.text}</Text>
+            <View style={{
+                  alignItems: "center",
+                  justifyContent: "center",}}>
+              <Text>Text: {item.text}</Text>
+            </View>
             <Button
               title={item.completed ? 'Completed' : 'Incomplete'}
               onPress={() => handleToggleTodo(item.id
@@ -49,7 +53,7 @@ const TodoListScreen = () => {
                   width: "100%",
                   alignItems: "center",
                   justifyContent: "center",
-                  borderRadius: 14,
+                  borderRadius: 30,
                   backgroundColor: "#171E2B",
                 }}
             />

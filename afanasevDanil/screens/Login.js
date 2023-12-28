@@ -54,7 +54,7 @@ const Login = () => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          marginTop: 20,
+          marginTop: 100,
         }}
         title="Login"
         onPress={() => {
@@ -68,6 +68,7 @@ const Login = () => {
           alignItems: "center",
           marginTop: 22,
           top: 10,
+          marginBottom: 22,
         }}
         title="Sign up"
         onPress={() => {

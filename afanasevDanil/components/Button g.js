@@ -10,6 +10,7 @@ const Buttong = ({ onPress, title, loading }) => (
       justifyContent: "center",
       borderRadius: 14,
       backgroundColor: "green",
+      marginBottom: 15,
     }}
     onPress={onPress}
   >
