@@ -2,7 +2,7 @@ import * as React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useSelector } from "react-redux";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import lab2 from "./lab2";
+import lab3 from "./lab3";
 
 const Tab = createBottomTabNavigator();
 
@@ -29,7 +29,7 @@ const TabNavigator = () => {
         },
       })}
     >
-      <Tab.Screen name="lab2" component={lab2} />
+      <Tab.Screen name="lab3" component={lab3} />
     </Tab.Navigator>
   );
 };
