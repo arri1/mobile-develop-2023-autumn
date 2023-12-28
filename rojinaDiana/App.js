@@ -1,37 +1,47 @@
-import { StatusBar } from "expo-status-bar";
-import { Button, StyleSheet, Text, View } from "react-native";
-import React, { useState } from 'react';
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { NavigationContainer } from "@react-navigation/native";
+import Lab1 from "./screens/Lab1";
+import Lab2 from "./screens/Lab2";
+import Lab3 from "./screens/Lab3";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+
+const Tab = createBottomTabNavigator();
 
 export default function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <View style={styles.container}>
-      
-      <Text>Lab1 useState{'\n'}</Text>
-      <Text>{count}{'\n'}</Text>
-      
-      <View style = {styles.btnContainer}>
-        <Button onPress={() => setCount(count + 1)} title="+1" color='rgb(0, 255, 0)' />
-        <Button onPress={() => setCount(count - 1)} title="-1" color='rgb(255, 215, 0)' />
-        <Button onPress={() => setCount(0)} title="restart" color='rgb(178, 34, 34)' />
-      </View>
-      
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen
+          name="Lab1"
+          component={Lab1}
+          options={{
+            tabBarLabel: "Lab1",
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="cloud" color={"blue"} size={20} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Lab2"
+          component={Lab2}
+          options={{
+            tabBarLabel: "Lab2",
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="cloud" color={"blue"} size={20} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Lab3"
+          component={Lab3}
+          options={{
+            tabBarLabel: "Lab3",
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="cloud" color={"blue"} size={20} />
+            ),
+          }}
+        />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  btnContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    flexWrap: 'wrap',
-  },
-});

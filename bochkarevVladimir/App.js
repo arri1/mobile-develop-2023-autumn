@@ -1,20 +1,10 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import MainStackNavigation from "./navigations/MainStackNavigation";
+import { NavigationContainer } from "@react-navigation/native";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Бочкарев Владимир ИВТ-20-1</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <MainStackNavigation />
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

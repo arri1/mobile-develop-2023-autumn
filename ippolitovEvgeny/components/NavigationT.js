@@ -8,6 +8,7 @@ import Settings from "./screens/Settings";
 import Lab1 from "./screens/Lab1";
 import Lab2 from "./screens/Lab2";
 import Lab3 from "./screens/Lab3";
+import Lab4 from "./screens/Lab4";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -51,6 +52,16 @@ const Home = () => {
           tabBarLabel: "Lab 3",
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="ios-albums" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Lab4"
+        component={Lab4}
+        options={{
+          tabBarLabel: "Lab 4",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="ios-share" color={color} size={size} />
           ),
         }}
       />

@@ -61,7 +61,7 @@ const TabNavigation = () => {
         }}
       />
       <Tab.Screen
-        name="Lab4"
+        name="Redux"
         component={Lab4}
         options={{
           tabBarLabel: "Lab4",

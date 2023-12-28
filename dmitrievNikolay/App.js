@@ -1,17 +1,18 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NavigationContainer } from "@react-navigation/native";
-import Lab1 from "./screens/Lab1";
-import Lab2 from "./screens/Lab2";
-
-const Tab = createBottomTabNavigator();
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import AuthNav from './Navigations/AuthNav';
+import LabsNav from './Navigations/LabsNav';
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="lab1" component={Lab1} />
-        <Tab.Screen name="lab2" component={Lab2} />
-      </Tab.Navigator>
+      <Stack.Navigator>
+        <Stack.Screen options={{ headerShown: false }} name="Auth" component={AuthNav} />
+        <Stack.Screen name="Labs" component={LabsNav} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }

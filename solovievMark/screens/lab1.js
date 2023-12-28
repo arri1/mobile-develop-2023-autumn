@@ -1,24 +1,25 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { decrement10, increment10 } from "../reduxComponents/reduxCounter";
 
 const Lab1 = () => {
-  const [count, setCount] = useState(0);
-
-  const addCount = () => {
-    setCount((prev) => prev + 10);
-  };
-
-  const decreseCount = () => {
-    setCount((prev) => prev - 10);
-  };
+  const dispatch = useDispatch();
+  const count = useSelector((state) => state.counter.value);
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.button} onPress={addCount}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => dispatch(increment10())}
+      >
         <Text>+10</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={decreseCount}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => dispatch(decrement10())}
+      >
         <Text>-10</Text>
       </TouchableOpacity>
       <Text>{count}</Text>

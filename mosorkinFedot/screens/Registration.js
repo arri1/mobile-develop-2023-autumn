@@ -8,7 +8,6 @@ import {
   View,
 } from "react-native";
 import { auth } from "../firebase";
-import { Link } from "@react-navigation/native";
 import { useNavigation } from "@react-navigation/core";
 
 const Registration = () => {

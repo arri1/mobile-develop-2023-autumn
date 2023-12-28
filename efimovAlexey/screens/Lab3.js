@@ -89,7 +89,7 @@ export default function Lab3() {
         <View style={styles.headingContainer}>
           {/* <img src={film.poster.url} style={styles.image} /> */}
           <Text style={styles.name}>
-            {film.name} ({film.year})
+            {film.name} {film.year}
           </Text>
         </View>
         <Text style={styles.description}>{film.description}</Text>

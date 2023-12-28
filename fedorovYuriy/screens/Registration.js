@@ -3,39 +3,64 @@ import { View, StyleSheet } from "react-native";
 import Button from "../components/Button";
 import { useNavigation } from "@react-navigation/native";
 import { useEffect } from "react";
-import { TextInput } from "react-native-gesture-handler";
-
+import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
+import { gql, useMutation } from "@apollo/client";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase";
 const Registration = () => {
-  const [login, onChangeLogin] = useState("Login");
-  const [pass, onChangePass] = useState("Password");
+  const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
 
+  const handleSubmit = async () => {
+    if (login && password) {
+      try {
+        await createUserWithEmailAndPassword(auth, login, password);
+        nav.push("Login");
+      } catch (err) {
+        console.log("Error:", err.message);
+      }
+    }
+  };
   const nav = useNavigation();
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "rgb(221, 201, 180)",
+      }}
+    >
+      <Button
+        title={"Back"}
+        onPress={() => {
+          nav.replace("Login");
+        }}
+      />
       <View style={styles.colorcontainer}>
         <View style={styles.buttoncontainer}>
           <TextInput
+            value={login}
+            onChangeText={(text) => setLogin(text)}
             style={styles.input}
-            onChangeText={onChangeLogin}
             textAlign="center"
             allowFontScaling
-            placeholder="Login"
+            placeholder="Email"
             placeholderTextColor="#CCCCCA"
           />
+
           <TextInput
+            secureTextEntry
+            value={password}
+            onChangeText={(text) => setPassword(text)}
             style={styles.input}
-            onChangeText={onChangePass}
             textAlign="center"
             allowFontScaling
             placeholder="Password"
             placeholderTextColor="#CCCCCA"
           />
-          <Button
-            title="Sign Up"
-            onPress={() => {
-              nav.replace("Login");
-            }}
-          />
+          <Button title="Sign Up" onPress={handleSubmit} />
         </View>
       </View>
     </View>
@@ -43,25 +68,33 @@ const Registration = () => {
 };
 const styles = StyleSheet.create({
   buttoncontainer: {
-    marginBottom: 22,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22,
   },
   colorcontainer: {
     width: 316,
-    height: 230,
+    height: 290,
     margin: 22,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "rgba(117, 92, 89, 0.31)",
     borderRadius: 25,
   },
   input: {
-    height: 52,
-    marginTop: 22,
-    borderWidth: 0,
+    width: 258,
+    height: 50,
+    marginBottom: 22,
     padding: 10,
-    backgroundColor: "#F7F6F1",
+    backgroundColor: "rgba(117, 92, 89, 0.31)",
     borderRadius: 25,
-    fontSize: 18,
+    fontSize: 20,
+  },
+  button: {
+    alignItems: "center",
+    backgroundColor: "#DDDDDD",
+    padding: 10,
   },
 });
 
