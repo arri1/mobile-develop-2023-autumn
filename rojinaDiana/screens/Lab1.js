@@ -4,7 +4,6 @@ import React, { useState } from "react";
 
 export default function Lab1() {
   const [count, setCount] = useState(0);
-
   return (
     <View style={styles.container}>
       <Text style={{ fontSize: 50 }}>{count}</Text>

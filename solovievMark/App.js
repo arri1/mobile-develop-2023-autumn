@@ -1,64 +1,18 @@
-import { StyleSheet, Image, View } from "react-native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import MainStackNavigation from "./navigations/MainStackNavigation";
 import { NavigationContainer } from "@react-navigation/native";
-import Lab1 from "./screens/lab1";
-import Lab2 from "./screens/lab2";
-import Lab3 from "./screens/lab3";
 
-const Tab = createBottomTabNavigator();
+const client = new ApolloClient({
+  uri: "http://194.59.247.134:1414/",
+  cache: new InMemoryCache(),
+});
+
 export default function App() {
   return (
-    <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen
-          name="Lab1"
-          component={Lab1}
-          options={{
-            tabBarIcon: () => {
-              return (
-                <Image
-                  source={require("./images/more.png")}
-                  style={styles.img}
-                />
-              );
-            },
-          }}
-        />
-        <Tab.Screen
-          name="Lab2"
-          component={Lab2}
-          options={{
-            tabBarIcon: () => {
-              return (
-                <Image
-                  source={require("./images/cloudy.png")}
-                  style={{ height: 30, width: 30 }}
-                />
-              );
-            },
-          }}
-        />
-        <Tab.Screen
-          name="Lab3"
-          component={Lab3}
-          options={{
-            tabBarIcon: () => {
-              return (
-                <Image
-                  source={require("./images/writing.png")}
-                  style={styles.img}
-                />
-              );
-            },
-          }}
-        />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <ApolloProvider client={client}>
+      <NavigationContainer>
+        <MainStackNavigation />
+      </NavigationContainer>
+    </ApolloProvider>
   );
 }
-const styles = StyleSheet.create({
-  img: {
-    height: 20,
-    width: 20,
-  },
-});

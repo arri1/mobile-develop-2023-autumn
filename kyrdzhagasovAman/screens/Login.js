@@ -54,7 +54,12 @@ const Login = () => {
         Логин
       </Text>
       <TextInput
-        style={{ backgroundColor: "white", width: "100%", padding: 6 }}
+        style={{
+          backgroundColor: "white",
+          width: "100%",
+          padding: 6,
+          borderRadius: 10,
+        }}
         value={username}
         onChangeText={(text) => setUsername(text)}
       />
@@ -68,7 +73,12 @@ const Login = () => {
         Пароль
       </Text>
       <TextInput
-        style={{ backgroundColor: "white", width: "100%", padding: 6 }}
+        style={{
+          backgroundColor: "white",
+          width: "100%",
+          padding: 6,
+          borderRadius: 10,
+        }}
         secureTextEntry={true}
         value={password}
         onChangeText={(text) => setPassword(text)}

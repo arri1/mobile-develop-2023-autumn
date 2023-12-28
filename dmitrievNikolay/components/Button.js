@@ -11,14 +11,14 @@ const Button = ({ onPress, title, loading }) => {
         alignItems: "center",
         justifyContent: "center",
         borderRadius: 14,
-        backgroundColor: "purple",
+        backgroundColor: "#171E2B",
       }}
       onPress={onPress}
     >
       {loading ? (
         <ActivityIndicator />
       ) : (
-        <Text style={{ color: "white" }}>{title}</Text>
+        <Text style={{ color: "white"}}>{title}</Text>
       )}
     </TouchableOpacity>
   );

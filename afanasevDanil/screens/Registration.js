@@ -1,9 +1,8 @@
-import React from 'react';
+import React from "react";
 import { useState } from "react";
-import { View} from "react-native";
+import { View } from "react-native";
 import Button from "../components/Button";
 import { useNavigation } from "@react-navigation/native";
-import { useEffect } from "react";
 import { TextInput } from "react-native-gesture-handler";
 
 const Registration = () => {
@@ -13,26 +12,25 @@ const Registration = () => {
   const nav = useNavigation();
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-          <TextInput
-            style={styles.input}
-            onChangeText={onChangeLogin}
-            textAlign="center"
-            allowFontScaling
-            placeholder="Login"
-          />
-          <TextInput
-            onChangeText={onChangePass}
-            textAlign="center"
-            allowFontScaling
-            placeholder="Password"
-          />
-          <Button
-            title="Sign Up"
-            onPress={() => {
-              nav.replace("Login");
-            }}
-          />
-        </View>
+      <TextInput
+        onChangeText={onChangeLogin}
+        textAlign="center"
+        allowFontScaling
+        placeholder="Login"
+      />
+      <TextInput
+        onChangeText={onChangePass}
+        textAlign="center"
+        allowFontScaling
+        placeholder="Password"
+      />
+      <Button
+        title="Sign Up"
+        onPress={() => {
+          nav.replace("Login");
+        }}
+      />
+    </View>
   );
 };
 

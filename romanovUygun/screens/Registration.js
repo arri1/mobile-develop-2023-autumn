@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     fontSize: 18,
     fontFamily: "IBMPlexMono_400Regular",
-    color: "CCCCCA",
+    color: "#CCCCCA",
   },
 });
 

@@ -1,7 +1,8 @@
 import { Text, View, StyleSheet, TouchableOpacity, ActivityIndicator, SafeAreaView, FlatList } from "react-native";
 import { useState, useMemo } from "react";
+import { connect } from 'react-redux';
 
-const Lab3 = () => {
+const Lab3 = ({theme}) => {
     const [books, setBooks] = useState([]);
     const [loading, setLoading] = useState(false);
     const [timeapi, setTimeApi] = useState(0);
@@ -42,7 +43,7 @@ const Lab3 = () => {
     );
   
     return (
-        <View style={styles.container}>
+        <View style={theme === 'light' ? styles.containerFirst : styles.containerSecond}>
             <Text style={styles.title}>LIST OF BOOKS</Text>
             <TouchableOpacity style={styles.firstButton} onPress={fetchBooks}>
                 <Text style={styles.textButton}>
@@ -68,14 +69,24 @@ const Lab3 = () => {
         </View>
     );
 };
-  
+
+
+const mapStateToProps = (state) => ({
+    theme: state.theme,
+});
+
+
 const styles = StyleSheet.create({
-    container: {
+    containerFirst: {
         flex: 1,
-        // marginTop:20,
         backgroundColor: '#2F3C5F',
         alignItems: 'center',
-    },
+      },
+      containerSecond: {
+        flex: 1,
+        backgroundColor: '#327CFF',
+        alignItems: 'center',
+      },
     item: {
         marginBottom: 28,
     },
@@ -100,7 +111,7 @@ const styles = StyleSheet.create({
         fontWeight: '500',
     },
     firstButton:{
-        width: 275,
+        width: 270,
         height: 38,
         borderRadius: 41, 
         justifyContent: 'center',
@@ -109,7 +120,7 @@ const styles = StyleSheet.create({
         marginTop: 34
     },
     secondButton:{
-        width: 275,
+        width: 270,
         height: 38,
         borderRadius: 41, 
         justifyContent: 'center',
@@ -143,4 +154,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Lab3;
+export default connect(mapStateToProps)(Lab3);

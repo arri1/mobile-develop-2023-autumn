@@ -52,7 +52,12 @@ const Registration = () => {
         Логин
       </Text>
       <TextInput
-        style={{ backgroundColor: "white", width: "95%", padding: 6 }}
+        style={{
+          backgroundColor: "white",
+          width: "95%",
+          padding: 6,
+          borderRadius: 10,
+        }}
         value={username}
         onChangeText={(text) => setUsername(text)}
       />
@@ -66,7 +71,12 @@ const Registration = () => {
         Пароль
       </Text>
       <TextInput
-        style={{ backgroundColor: "white", width: "95%", padding: 6 }}
+        style={{
+          backgroundColor: "white",
+          width: "95%",
+          padding: 6,
+          borderRadius: 10,
+        }}
         secureTextEntry={true}
         value={password}
         onChangeText={(text) => setPassword(text)}
@@ -81,7 +91,12 @@ const Registration = () => {
         Повторите пароль
       </Text>
       <TextInput
-        style={{ backgroundColor: "white", width: "95%", padding: 6 }}
+        style={{
+          backgroundColor: "white",
+          width: "95%",
+          padding: 6,
+          borderRadius: 10,
+        }}
         secureTextEntry={true}
         value={password2}
         onChangeText={(text) => setPassword2(text)}

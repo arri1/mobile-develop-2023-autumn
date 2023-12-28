@@ -2,8 +2,9 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect, useState } from "react";
 import { Text, View } from "react-native";
 import { useSelector } from "react-redux";
+import Button from "../components/Button";
 
-const Lab4 = () => {
+const Lab4 = ({ navigation }) => {
   const [storageData, setStorageData] = useState("");
   useEffect(() => {
     async function getToken() {
@@ -89,6 +90,20 @@ const Lab4 = () => {
       >
         {storageData}
       </Text>
+      <View
+        style={{
+          padding: 14,
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+          gap: 10,
+        }}
+      >
+        <Button
+          title={"Изменить имя"}
+          onPress={() => navigation.navigate("EditScreen")}
+        />
+      </View>
     </View>
   );
 };

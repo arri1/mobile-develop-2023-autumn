@@ -1,8 +1,9 @@
 import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { connect } from 'react-redux';
 
-const Lab2 = () => {
+const Lab2 = ({theme}) => {
 
   const [price, setPrice] = useState("");
 
@@ -22,7 +23,7 @@ const Lab2 = () => {
   }, []);
 
   return (
-    <View style={styles.container}>
+    <View style={theme === 'light' ? styles.containerFirst : styles.containerSecond}>
       <Text style={styles.title}>BITCOIN RATE</Text>
       <Image
         style={styles.bitcoinImg}
@@ -38,18 +39,27 @@ const Lab2 = () => {
   );
 };
 
+
+const mapStateToProps = (state) => ({
+  theme: state.theme,
+});
+
+
 const styles = StyleSheet.create({
-  container: {
+  containerFirst: {
     flex: 1,
     backgroundColor: '#2F3C5F',
     alignItems: 'center',
-    // justifyContent: 'center',
-
+  },
+  containerSecond: {
+    flex: 1,
+    backgroundColor: '#327CFF',
+    alignItems: 'center',
   },
   button: {
     backgroundColor: "#EFF0F6", 
     minHeight: 38,
-    minWidth: 158,
+    width: 270,
     borderRadius: 41,
     justifyContent: 'center',
   },
@@ -80,4 +90,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Lab2;
+export default connect(mapStateToProps)(Lab2);

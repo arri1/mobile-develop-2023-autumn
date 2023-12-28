@@ -1,0 +1,50 @@
+# Define a User type with basic information
+type User {
+  id: ID!
+  username: String!
+}
+
+# Define an AuthPayload type for authentication results
+type AuthPayload {
+  token: String
+  user: User
+}
+
+# Define input types for login parameters
+input LoginInput {
+  username: String!
+  password: String!
+}
+
+# Define the Query type
+type Query {
+  # A query to get information about the currently authenticated user
+  me: User
+}
+
+# Define the Mutation type
+type Mutation {
+  # A mutation for user login
+  login(input: LoginInput!): AuthPayload
+}
+
+# GraphQL query to fetch the currently authenticated user
+query GetMe {
+  me {
+    id
+    username
+    email
+  }
+}
+
+# GraphQL mutation for user login
+mutation UserLogin($username: String!, $password: String!) {
+  login(input: { username: $username, password: $password }) {
+    token
+    user {
+      id
+      username
+      email
+    }
+  }
+}

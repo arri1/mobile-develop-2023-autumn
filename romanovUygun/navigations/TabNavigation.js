@@ -6,6 +6,7 @@ import Lab4 from "../screens/Lab4";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Settings from "../screens/Settings";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import SettingsNavigation from "./SettingsNavigation";
 const Tab = createBottomTabNavigator();
 
 const TabNavigation = () => {
@@ -28,7 +29,7 @@ const TabNavigation = () => {
 
       <Tab.Screen name="Lab4" component={Lab4} />
       <Tab.Screen name="ReduxLab" component={ReduxLab} />
-      <Tab.Screen name="Settings" component={Settings} />
+      <Tab.Screen name="Settings" component={SettingsNavigation} />
     </Tab.Navigator>
   );
 };

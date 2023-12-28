@@ -1,8 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { useState } from 'react';
+import { connect } from 'react-redux';
 
-const Lab1 = () => {
+const Lab1 = ({ theme }) => {
   
   const [isPressed, setPressed] = useState(false);
 
@@ -13,7 +14,7 @@ const Lab1 = () => {
   const textColor = isPressed ? '#E77C2E' : '#3FDA3C';
 
   return (
-    <View style={styles.container}>
+    <View style={theme === 'light' ? styles.containerFirst : styles.containerSecond}>
       <Text style={styles.title} >TEXT COLOR</Text>
       <Text style={{color: textColor, marginTop: 160, fontSize: 35, fontFamily: 'Roboto', fontWeight: "700",}}>Hello world!</Text>
       <TouchableOpacity style={styles.button} onPress={changeText}>
@@ -26,10 +27,21 @@ const Lab1 = () => {
   );
 }
 
+
+const mapStateToProps = (state) => ({
+  theme: state.theme,
+});
+
+
 const styles = StyleSheet.create({
-  container: {
+  containerFirst: {
     flex: 1,
     backgroundColor: '#2F3C5F',
+    alignItems: 'center',
+  },
+  containerSecond: {
+    flex: 1,
+    backgroundColor: '#327CFF',
     alignItems: 'center',
   },
   title:{
@@ -40,7 +52,7 @@ const styles = StyleSheet.create({
     marginTop: 120
   }, 
   button:{
-    width: 205,
+    width: 270,
     height: 38,
     backgroundColor: '#EFF0F6',
     marginTop: 133,
@@ -56,4 +68,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Lab1;
+export default connect(mapStateToProps)(Lab1);

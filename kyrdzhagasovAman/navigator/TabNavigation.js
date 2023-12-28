@@ -9,6 +9,7 @@ import Lab3Part1 from "../screens/Lab3Part1";
 import Lab3Part2 from "../screens/Lab3Part2";
 import Settings from "../screens/Settings";
 import Lab4 from "../screens/Lab4";
+import EditScreen from "../screens/EditScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -39,6 +40,27 @@ function Lab3Stack() {
   );
 }
 
+function Lab4Stack() {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerMode: "screen",
+      }}
+    >
+      <Stack.Screen
+        name="lab4Home"
+        component={Lab4}
+        options={{ title: "Профиль" }}
+      />
+      <Stack.Screen
+        name="EditScreen"
+        component={EditScreen}
+        options={{ title: "Поменять данные" }}
+      />
+    </Stack.Navigator>
+  );
+}
+
 const TabNavigation = () => {
   function getHeaderTitle(route) {
     const routeName = getFocusedRouteNameFromRoute(route) ?? "lab3Home";
@@ -50,6 +72,10 @@ const TabNavigation = () => {
         return "c useMemo";
       case "lab3.2":
         return "без useMemo";
+      case "lab4Home":
+        return "Профиль";
+      case "EditScreen":
+        return "Изменение данных";
     }
   }
 
@@ -85,12 +111,13 @@ const TabNavigation = () => {
       />
       <Tab.Screen
         name="lab4"
-        component={Lab4}
-        options={{
-          title: "Профиль",
+        component={Lab4Stack}
+        options={({ route }) => ({
+          headerTitle: getHeaderTitle(route),
           tabBarLabel: "Профиль",
           tabBarActiveTintColor: "green",
-        }}
+          headerShown: false,
+        })}
       />
       <Tab.Screen
         name="Settings"

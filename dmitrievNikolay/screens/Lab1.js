@@ -11,13 +11,13 @@ const Lab1 = () => {
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        gap: 10,
+        gap: 10
       }}
     >
       <Text>{count}</Text>
       <Button
         onPress={() => {
-          setCount(count + 1);
+          setCount(count + 1);  
         }}
         title={"Кнопка"}
       />

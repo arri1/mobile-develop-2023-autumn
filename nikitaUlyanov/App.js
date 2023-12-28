@@ -1,23 +1,16 @@
 import React, { useState } from "react";
-import { StatusBar } from "expo-status-bar";
-import {
-  StyleSheet,
-  Text,
-  View,
-  SafeAreaView,
-  TouchableOpacity,
-  Image,
-  FlatList,
-  Dimensions,
-} from "react-native";
-import Header from "./components/Header";
+
 import * as Font from "expo-font";
-import Lent from "./components/Lent";
-import Stories from "./components/Stories";
 import Rec from "./screens/Rec";
 import AppLoading from "expo-app-loading";
 import Profile from "./screens/Profile";
 import Lab2 from "./screens/UseEffect";
+import Main from "./screens/Main";
+
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+
+const Stack = createStackNavigator();
 
 const fonts = () =>
   Font.loadAsync({
@@ -28,14 +21,7 @@ const fonts = () =>
 
 export default function App() {
   const [fonts, setFont] = useState(false);
-  const pages = [
-    "Главная",
-    "Рекомендации",
-    "",
-    "To do List",
-    "Que",
-  ];
-  const [page, setPage] = useState(0);
+
   const [stories, setStories] = useState([
     {
       name: "#Que",
@@ -251,222 +237,74 @@ export default function App() {
     },
   ]);
 
-  var title = pages[page];
   if (fonts) {
-    if (page == 0) {
-      return (
-        <SafeAreaView style={styles.main}>
-          <StatusBar style="auto" />
-
-          <Header title={title} page={page} />
-
-          <Stories stories={stories} />
-
-          <Lent post={posts} />
-
-          <View style={styles.footer}>
-            <TouchableOpacity
-              style={{ alignItems: "center" }}
-              onPress={() => setPage(0)}
-            >
-              <Image
-                style={styles.icon}
-                source={require("./assets/footer-icons/Home.png")}
-              />
-              <Text>Main</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={{ alignItems: "center" }}
-              onPress={() => setPage(1)}
-            >
-              <Image
-                style={styles.icon}
-                source={require("./assets/footer-icons/Rec.png")}
-              />
-              <Text>Wall</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={{ alignItems: "center" }}
-              onPress={() => setPage(3)}
-            >
-              <Image
-                style={styles.icon}
-                source={require("./assets/footer-icons/NewPost.png")}
-              />
-              <Text>TodoList</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={{ alignItems: "center" }}
-              onPress={() => setPage(4)}
-            >
-              <Image
-                style={styles.icon}
-                source={require("./assets/footer-icons/Profile.png")}
-              />
-              <Text>Profile</Text>
-            </TouchableOpacity>
-          </View>
-        </SafeAreaView>
-      );
-    } else if (page == 1) {
-      return (
-        <SafeAreaView style={styles.main}>
-          <StatusBar style="auto" />
-
-          <Header title={title} page={page} />
-
-          <Rec post={posts} />
-
-          <View style={styles.footer}>
-            <TouchableOpacity
-              style={{ alignItems: "center" }}
-              onPress={() => setPage(0)}
-            >
-              <Image
-                style={styles.icon}
-                source={require("./assets/footer-icons/Home.png")}
-              />
-              <Text>Main</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={{ alignItems: "center" }}
-              onPress={() => setPage(1)}
-            >
-              <Image
-                style={styles.icon}
-                source={require("./assets/footer-icons/Rec.png")}
-              />
-              <Text>Wall</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={{ alignItems: "center" }}
-              onPress={() => setPage(3)}
-            >
-              <Image
-                style={styles.icon}
-                source={require("./assets/footer-icons/NewPost.png")}
-              />
-              <Text>TodoList</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={{ alignItems: "center" }}
-              onPress={() => setPage(4)}
-            >
-              <Image
-                style={styles.icon}
-                source={require("./assets/footer-icons/Profile.png")}
-              />
-              <Text>Profile</Text>
-            </TouchableOpacity>
-          </View>
-        </SafeAreaView>
-      );
-    } else if (page == 3) {
-      return (
-        <SafeAreaView style={styles.main}>
-          <StatusBar style="auto" />
-
-          <Header title={title} page={page} />
-
-          <Lab2 />
-
-          <View style={styles.footer}>
-            <TouchableOpacity
-              style={{ alignItems: "center" }}
-              onPress={() => setPage(0)}
-            >
-              <Image
-                style={styles.icon}
-                source={require("./assets/footer-icons/Home.png")}
-              />
-              <Text>Main</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={{ alignItems: "center" }}
-              onPress={() => setPage(1)}
-            >
-              <Image
-                style={styles.icon}
-                source={require("./assets/footer-icons/Rec.png")}
-              />
-              <Text>Wall</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={{ alignItems: "center" }}
-              onPress={() => setPage(3)}
-            >
-              <Image
-                style={styles.icon}
-                source={require("./assets/footer-icons/NewPost.png")}
-              />
-              <Text>TodoList</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={{ alignItems: "center" }}
-              onPress={() => setPage(4)}
-            >
-              <Image
-                style={styles.icon}
-                source={require("./assets/footer-icons/Profile.png")}
-              />
-              <Text>Profile</Text>
-            </TouchableOpacity>
-          </View>
-        </SafeAreaView>
-      );
-    } else if (page == 4) {
-      return (
-        <SafeAreaView style={styles.main}>
-          <StatusBar style="auto" />
-
-          <Profile />
-
-          <Rec post={posts} />
-          <View style={styles.footer}>
-            <TouchableOpacity
-              style={{ alignItems: "center" }}
-              onPress={() => setPage(0)}
-            >
-              <Image
-                style={styles.icon}
-                source={require("./assets/footer-icons/Home.png")}
-              />
-              <Text>Main</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={{ alignItems: "center" }}
-              onPress={() => setPage(1)}
-            >
-              <Image
-                style={styles.icon}
-                source={require("./assets/footer-icons/Rec.png")}
-              />
-              <Text>Wall</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={{ alignItems: "center" }}
-              onPress={() => setPage(3)}
-            >
-              <Image
-                style={styles.icon}
-                source={require("./assets/footer-icons/NewPost.png")}
-              />
-              <Text>TodoList</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={{ alignItems: "center" }}
-              onPress={() => setPage(4)}
-            >
-              <Image
-                style={styles.icon}
-                source={require("./assets/footer-icons/Profile.png")}
-              />
-              <Text>Profile</Text>
-            </TouchableOpacity>
-          </View>
-        </SafeAreaView>
-      );
-    }
+    return (
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Main"
+            component={Main}
+            initialParams={{ storie: stories, post: posts }}
+            options={{
+              title: "Главная",
+              headerTitleStyle: {
+                fontFamily: "mp-eb",
+                fontSize: 28,
+                marginLeft: -168,
+                marginBottom: 10,
+              },
+            }}
+          />
+          <Stack.Screen
+            name="ToDoList"
+            component={Lab2}
+            options={{
+              title: "ToDoList",
+              headerTitleStyle: {
+                fontFamily: "mp-eb",
+                fontSize: 28,
+                marginLeft: -168,
+                marginBottom: 10,
+              },
+              headerLeft: () => null,
+              gesturesEnabled: false,
+            }}
+          />
+          <Stack.Screen
+            name="Profile"
+            component={Profile}
+            initialParams={{ post: posts }}
+            options={{
+              title: "Профиль",
+              headerTitleStyle: {
+                fontFamily: "mp-eb",
+                fontSize: 28,
+                marginLeft: -168,
+                marginBottom: 10,
+              },
+              headerLeft: () => null,
+              gesturesEnabled: false,
+            }}
+          />
+          <Stack.Screen
+            name="Rec"
+            component={Rec}
+            initialParams={{ post: posts }}
+            options={{
+              title: "Рекомендации",
+              headerTitleStyle: {
+                fontFamily: "mp-eb",
+                fontSize: 28,
+                marginLeft: -128,
+                marginBottom: 10,
+              },
+              headerLeft: () => null,
+              gesturesEnabled: false,
+            }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
   } else {
     return (
       <AppLoading
@@ -477,28 +315,3 @@ export default function App() {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  main: {
-    flex: 1,
-    flexDirection: "column",
-    justifyContent: "space-between",
-  },
-  footer: {
-    height: 64,
-    width: "100%",
-    justifyContent: "space-around",
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: "white",
-  },
-  title: {
-    marginLeft: 20,
-    fontFamily: "mp-eb",
-    fontSize: 28,
-  },
-  icon: {
-    width: 30,
-    height: 30,
-  },
-});

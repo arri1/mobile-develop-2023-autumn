@@ -12,7 +12,7 @@ const Settings = () => {
     });
   };
   return (
-    <View style={{ flex: 1, gap: 10, alignItems: "center", margin: 16 }}>
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Button title={"Выйти"} onPress={() => logOut()} />
     </View>
   );

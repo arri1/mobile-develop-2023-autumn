@@ -21,3 +21,12 @@ export const registration = async (username, password, role) => {
     throw new Error(err.response.data.message);
   }
 };
+
+export const changeData = async (id, username) => {
+  try {
+    const { data } = await $host.put(`api/user/${id}`, { username });
+    return data;
+  } catch (err) {
+    throw new Error(err.response.data.message);
+  }
+};

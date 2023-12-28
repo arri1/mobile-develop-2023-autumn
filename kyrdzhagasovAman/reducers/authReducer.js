@@ -13,6 +13,13 @@ const authReducer = (state = initialState, action) => {
         accessToken: action.payload.token,
         /*refreshToken: action.payload.refreshToken,*/
       };
+    case "UPDATE_SUCCESS":
+      return {
+        ...state,
+        user: action.payload.user,
+        accessToken: action.payload.token,
+        /*refreshToken: action.payload.refreshToken,*/
+      };
     default:
       return state;
   }

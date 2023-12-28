@@ -1,3 +1,4 @@
+import React from "react";
 import { View, StyleSheet } from "react-native";
 import Button from "../components/Button";
 import { useNavigation } from "@react-navigation/native";
@@ -16,13 +17,14 @@ const Settings = () => {
     </View>
   );
 };
+
 const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
     alignItems: "center",
     flex: 1,
     gap: 10,
-    backgroundColor: "rgb(221, 201, 180)",
+    backgroundColor: "rgb(255,192,203)",
   },
 });
 export default Settings;
