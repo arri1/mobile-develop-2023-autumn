@@ -1,6 +1,7 @@
 import Lab1 from "../Screens/Lab1";
 import Lab2 from "../Screens/Lab2";
 import Lab3 from "../Screens/Lab3";
+import Lab5 from "../Screens/Lab5";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Settings from "../Screens/Settings";
@@ -57,6 +58,17 @@ const TabNavigation = () => {
         component={Lab3}
         options={{
           tabBarLabel: "Lab3",
+          tabBarIcon: ({ color, size }) => (
+            <MaterialIcons name="assignment" size={size} color={color} />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name="Lab5"
+        component={Lab5}
+        options={{
+          tabBarLabel: "Lab5",
           tabBarIcon: ({ color, size }) => (
             <MaterialIcons name="assignment" size={size} color={color} />
           ),
