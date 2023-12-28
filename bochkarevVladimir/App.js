@@ -1,4 +1,4 @@
-import MainStackNavigation from "./navigations/MainStackNavigation";
+import MainStackNavigation from "./navigations/MainNavigation";
 import { NavigationContainer } from "@react-navigation/native";
 
 export default function App() {
