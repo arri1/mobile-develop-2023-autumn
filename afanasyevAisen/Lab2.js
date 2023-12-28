@@ -1,13 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, Button, FlatList } from 'react-native';
-
+import { View, Text, TextInput, Button, FlatList, AsyncStorage } from 'react-native';
+import axios from "axios";
 const TodoList = () => {
   const [todo, setTodo] = useState('');
   const [todos, setTodos] = useState([]);
 
+  // Загрузка списка дел при монтировании
   useEffect(() => {
+    const loadTodos = async () => {
+      const savedTodos = await AsyncStorage.getItem('todos');
+      if (savedTodos) {
+        setTodos(JSON.parse(savedTodos));
+      }
+    };
 
+    loadTodos();
   }, []);
+
+  // Сохранение списка дел при каждом его изменении
+  useEffect(() => {
+    const saveTodos = async () => {
+      await AsyncStorage.setItem('todos', JSON.stringify(todos));
+    };
+
+    saveTodos();
+  }, [todos]);
 
   const addTodo = () => {
     if (todo.length > 0) {
@@ -26,7 +43,6 @@ const TodoList = () => {
       />
       <Button title="Добавить" onPress={addTodo} />
       <FlatList
-        style={{ fontSize: 24, marginBottom: 20 }}
         data={todos}
         renderItem={({ item }) => <Text>{item}</Text>}
         keyExtractor={(item, index) => index.toString()}
