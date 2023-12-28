@@ -13,14 +13,14 @@ export default function Lab1() {
           style={styles.buttonGray}
           onPress={() => setCount(count - 5)}
         >
-          <Text style={styles.text}>-2</Text>
+          <Text style={styles.text}>-5</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={styles.buttonGray}
           onPress={() => setCount(count + 5)}
         >
-          <Text style={styles.text}>+2</Text>
+          <Text style={styles.text}>+5</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
