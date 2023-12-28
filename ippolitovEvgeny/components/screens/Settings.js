@@ -63,7 +63,7 @@ const Settings = ({ navigation }) => {
       />
 
       <Text style={styles.sectionTitle}>Logout:</Text>
-      <Button title="Logout" onPress={handleLogout} color="#1E78FF" />
+      <Button title="Logout" onPress={handleLogout} style={{ margin: 30 }} color="#1E78FF" />
     </View>
   );
 };
@@ -78,6 +78,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
     marginTop: 20,
+    marginBottom: 10,
   },
   input: {
     height: 40,
