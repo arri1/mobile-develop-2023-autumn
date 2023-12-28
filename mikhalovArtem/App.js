@@ -1,36 +1,23 @@
-import React, { useState } from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-const Counter = () => {
-  const [count, setCount] = useState(0);
+// Импорт компонентов из файлов Lab2 и Lab3
+import Lab1 from './screens/lab1';
+import Lab2 from './screens/lab2';
 
-  const increment = () => {
-    setCount(count + 1);
-  };
+// Создание нижнего навигатора
+const Tab = createBottomTabNavigator();
 
-  const decrement = () => {
-    setCount(count - 1);
-  };
-
+function App() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Счетчик: {count}</Text>
-      <Button title="+" onPress={increment} />
-      <Button title="-" onPress={decrement} />
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name="Lab1" component={Lab1} />
+        <Tab.Screen name="Lab2" component={Lab2} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
-};
+}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  text: {
-    fontSize: 24,
-    marginBottom: 20,
-  },
-});
-
-export default Counter;
+export default App;
