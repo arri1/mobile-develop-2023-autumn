@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "45673239191",
+    "project_id": "web-app-1aee1",
+    "storage_bucket": "web-app-1aee1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:45673239191:android:654c28e2ba296863e28fd2",
+        "android_client_info": {
+          "package_name": "rojinadiana.com"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7qaWKr1Ws7p8Yy7nQ32eLuk1bVpcvCt4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

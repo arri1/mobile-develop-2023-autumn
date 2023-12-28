@@ -3,7 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import Lab1 from "./screens/Lab1";
 import Lab2 from "./screens/Lab2";
 import Lab3 from "./screens/Lab3";
-import Lab4 from "./screens/Lab4";
+import Lab5 from "./screens/Lab5";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
@@ -43,10 +43,10 @@ export default function App() {
           }}
         />
         <Tab.Screen
-          name="Lab4"
-          component={Lab4}
+          name="Lab5"
+          component={Lab5}
           options={{
-            tabBarLabel: "Lab4",
+            tabBarLabel: "Lab5",
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons name="cloud" color={"blue"} size={20} />
             ),
