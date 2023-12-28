@@ -1,21 +1,68 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  TextInput,
-  Button,
-  StyleSheet,
-  TouchableOpacity,
-} from "react-native";
-
+import { View, Text, TextInput, Button, StyleSheet } from "react-native";
+import { updateEmail, updatePassword, signOut } from "firebase/auth";
+import { auth } from "../config/firebase";
 const Settings = ({ navigation }) => {
-  const handleLogout = () => {
-    navigation.navigate("Auth");
+  const [newEmail, setNewEmail] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+
+  const handleChangeEmail = async () => {
+    try {
+      await updateEmail(auth.currentUser, newEmail);
+      console.log("Email changed successfully");
+    } catch (error) {
+      console.error("Email change failed", error.message);
+    }
+  };
+
+  const handleChangePassword = async () => {
+    try {
+      await updatePassword(auth.currentUser, newPassword);
+      console.log("Password changed successfully");
+    } catch (error) {
+      console.error("Password change failed", error.message);
+    }
+  };
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      navigation.navigate("Auth");
+    } catch (error) {
+      console.error("Logout failed", error.message);
+    }
   };
 
   return (
     <View style={styles.container}>
-      <Text>Logout</Text>
+      <Text style={styles.sectionTitle}>Change Email:</Text>
+      <TextInput
+        placeholder="New Email"
+        value={newEmail}
+        onChangeText={(text) => setNewEmail(text)}
+        style={styles.input}
+      />
+      <Button
+        title="Change Email"
+        onPress={handleChangeEmail}
+        color="#1E78FF"
+      />
+
+      <Text style={styles.sectionTitle}>Change Password:</Text>
+      <TextInput
+        placeholder="New Password"
+        value={newPassword}
+        onChangeText={(text) => setNewPassword(text)}
+        secureTextEntry
+        style={styles.input}
+      />
+      <Button
+        title="Change Password"
+        onPress={handleChangePassword}
+        color="#1E78FF"
+      />
+
+      <Text style={styles.sectionTitle}>Logout:</Text>
       <Button title="Logout" onPress={handleLogout} color="#1E78FF" />
     </View>
   );
@@ -27,6 +74,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  sectionTitle: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginTop: 20,
+  },
   input: {
     height: 40,
     width: 200,
@@ -34,10 +86,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     margin: 10,
     paddingLeft: 10,
-  },
-  linkText: {
-    color: "#1E78FF",
-    marginTop: 10,
   },
 });
 
