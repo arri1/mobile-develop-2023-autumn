@@ -49,13 +49,13 @@ export default function Lab1() {
 
 const styles = StyleSheet.create({
   text: {
-    color: "white",
+    color: "black",
     fontSize: 25,
     fontFamily: "Verdana",
   },
   container: {
     flex: 2,
-    backgroundColor: "white",
+    backgroundColor: "gray",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     width: 100,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "blue",
+    backgroundColor: "lightgray",
     color: "white",
   },
 });
