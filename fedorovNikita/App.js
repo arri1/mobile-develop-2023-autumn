@@ -1,32 +1,27 @@
-import { Text, TouchableOpacity, View } from "react-native";
-import { useState } from "react";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { NavigationContainer } from "@react-navigation/native";
+
+import Login from "./Login";
+import Labs from "./screens/Labs";
+
+import { Provider } from "react-redux";
+import store from "./store.js";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const [text, setText] = useState(1000);
   return (
-    <View
-      style={{
-        justifyContent: "center",
-        alignItems: "center",
-        flex: 1,
-        gap: 10,
-      }}
-    >
-      <TouchableOpacity
-        style={{
-          height: 40,
-          width: 200,
-          alignItems: "center",
-          justifyContent: "center",
-          borderRadius: 14,
-          backgroundColor: "red",
-        }}
-        onPress={() => {
-          setText(text - 7);
-        }}
-      >
-        <Text style={{ color: "white" }}>{text}</Text>
-      </TouchableOpacity>
-    </View>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{
+            headerShown: false,
+          }}
+        >
+          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="Labs" component={Labs} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }

@@ -13,7 +13,6 @@ const Lab3Part1 = () => {
     return result;
   }, []);
 
-
   return (
     <View
       style={{

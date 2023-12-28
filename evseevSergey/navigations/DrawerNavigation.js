@@ -4,6 +4,7 @@ import Lab1 from "../screens/Lab1";
 import Lab2 from "../screens/Lab2";
 import Lab3 from "../screens/Lab3";
 import Lab3Entries from "../screens/Lab3Entries";
+import Lab4Auth from "../screens/Lab4Auth";
 const Drawer = createDrawerNavigator();
 
 const DrawerNavigation = () => {
@@ -32,6 +33,7 @@ const DrawerNavigation = () => {
       <Drawer.Screen name="Lab2" component={Lab2} />
       <Drawer.Screen name="Lab3" component={Lab3} />
       <Drawer.Screen name="Lab3Entries" component={Lab3Entries} />
+      <Drawer.Screen name="Lab4Auth" component={Lab4Auth} />
     </Drawer.Navigator>
   );
 };

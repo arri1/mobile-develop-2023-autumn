@@ -25,6 +25,7 @@ const Lab2 = () => {
   return (
     <View
       style={{
+        fontSize: 15,
         padding: 14,
         flex: 1,
         justifyContent: "center",
@@ -34,6 +35,7 @@ const Lab2 = () => {
     >
       <Text style={{ textAlign: "center" }}>{fact}</Text>
       <Button
+        
         loading={loading}
         title={"Обновить"}
         onPress={() => {

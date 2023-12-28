@@ -1,0 +1,1 @@
+https://www.figma.com/file/aZDr1MJ43wqDi3HVkPYCfh/figmaGrigorev?type=design&node-id=0%3A1&mode=design&t=lTblKk8ILAvGNp1p-1

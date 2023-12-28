@@ -8,10 +8,14 @@ import {
 } from "@expo-google-fonts/ibm-plex-mono";
 import { TextInput } from "react-native-gesture-handler";
 import { useMutation } from "@apollo/client";
-
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase";
+import useAuth from "../hooks/useAuth";
 const Login = () => {
-  const [login, onChangeLogin] = useState("Login");
-  const [pass, onChangePass] = useState("Password");
+  const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
+
+  const { user } = useAuth();
   let [fontsLoaded] = useFonts({
     IBMPlexMono_400Regular,
   });
@@ -19,7 +23,18 @@ const Login = () => {
   if (!fontsLoaded) {
     return null;
   }
-  //задание заюзать редакс либо другие стейт менеджеры
+
+  const handleSubmit = async () => {
+    if (login && password) {
+      try {
+        await signInWithEmailAndPassword(auth, login, password);
+        nav.push("Tab");
+      } catch (err) {
+        console.log("Error:", err.message);
+      }
+    }
+  };
+
   const nav = useNavigation();
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -27,7 +42,7 @@ const Login = () => {
         <View style={styles.buttoncontainer}>
           <TextInput
             style={styles.input}
-            onChangeText={onChangeLogin}
+            onChangeText={(text) => setLogin(text)}
             textAlign="center"
             allowFontScaling
             placeholder="Login"
@@ -35,18 +50,13 @@ const Login = () => {
           />
           <TextInput
             style={styles.input}
-            onChangeText={onChangePass}
+            onChangeText={(text) => setPassword(text)}
             textAlign="center"
             allowFontScaling
             placeholder="Password"
             placeholderTextColor="#CCCCCA"
           />
-          <Button
-            title="Login"
-            onPress={() => {
-              nav.replace("Tab");
-            }}
-          />
+          <Button title="Login" onPress={handleSubmit} />
           <Button
             title="Registration"
             onPress={() => {
@@ -80,7 +90,6 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     fontSize: 18,
     fontFamily: "IBMPlexMono_400Regular",
-    color: "CCCCCA",
   },
 });
 export default Login;

@@ -12,13 +12,18 @@ import {
   useFonts,
   IBMPlexMono_400Regular,
 } from "@expo-google-fonts/ibm-plex-mono";
-
+import { useSelector, useDispatch } from "react-redux";
+import {
+  decrement100,
+  increment100,
+  decrement50,
+} from "../reduxComponents/counterSlice";
 const Lab1 = () => {
   let [fontsLoaded] = useFonts({
     IBMPlexMono_400Regular,
   });
-  const [count, setCount] = useState(0);
-
+  const dispatch = useDispatch();
+  const count = useSelector((state) => state.counter.value);
   if (!fontsLoaded) {
     return null;
   }
@@ -38,9 +43,9 @@ const Lab1 = () => {
           </Text>
         </View>
         <View style={styles.buttonontainer}>
-          <Button title="+100" onPress={() => setCount(count + 100)} />
-          <Button title="-100" onPress={() => setCount(count - 100)} />
-          <Button title="-50" onPress={() => setCount(count - 50)} />
+          <Button title="+100" onPress={() => dispatch(increment100())} />
+          <Button title="-100" onPress={() => dispatch(decrement100())} />
+          <Button title="-50" onPress={() => dispatch(decrement50())} />
           <StatusBar style="auto" />
         </View>
       </View>

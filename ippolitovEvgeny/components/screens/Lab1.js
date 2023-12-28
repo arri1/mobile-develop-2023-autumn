@@ -7,16 +7,19 @@ import {
   StyleSheet,
   ScrollView,
 } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
+import { setBgColor } from "../Redux/colorSlice";
 
 const Lab1 = ({ navigation }) => {
-  const [bgColor, setBgColor] = useState("");
+  const dispatch = useDispatch();
+  const bgColor = useSelector((state) => state.color.bgColor);
 
   const colorButton = (color, text) => {
     const textColor = color === "white" ? "black" : "white";
     return (
       <TouchableOpacity
         style={[styles.colorChangeButton, { backgroundColor: color }]}
-        onPress={() => setBgColor(color)}
+        onPress={() => dispatch(setBgColor(color))}
       >
         <Text style={{ color: textColor }}>{text}</Text>
       </TouchableOpacity>

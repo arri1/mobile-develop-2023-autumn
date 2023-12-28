@@ -5,6 +5,7 @@ import Lab1 from "../screens/Lab1";
 import Lab2 from "../screens/Lab2";
 import Lab3 from "../screens/Lab3";
 import Lab4 from "../screens/Lab4";
+import Lab5 from "../screens/Lab5";
 import LabSettings from "../screens/LabSettings";
 
 const Tab = createBottomTabNavigator();
@@ -71,6 +72,20 @@ const TabNavigator = () => {
             <View>
               <Image
                 source={require("../imgs/lab4icon.png")}
+                style={styles.img}
+              />
+            </View>
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Lab5"
+        component={Lab5}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <View>
+              <Image
+                source={require("../imgs/lab5icon.png")}
                 style={styles.img}
               />
             </View>

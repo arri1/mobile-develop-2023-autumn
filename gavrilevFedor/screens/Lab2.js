@@ -30,13 +30,17 @@ const Lab2 = () => {
         justifyContent: "center",
         alignItems: "center",
         gap: 10,
+        backgroundColor: "#F0F0F0",
       }}
     >
       <Text style={{ textAlign: "center" }}>{fact}</Text>
       <Button
         loading={loading}
-        color={'green'}
+        color={"#1244C5"}
         title={"Обновить"}
+        height={100}
+        width={100}
+        borderRadius={25}
         onPress={() => {
           getFunc();
         }}

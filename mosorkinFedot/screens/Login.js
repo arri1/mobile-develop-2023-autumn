@@ -9,7 +9,6 @@ import {
 } from "react-native";
 import { auth } from "../firebase";
 import { useNavigation } from "@react-navigation/core";
-import { Link } from "@react-navigation/native";
 
 const Login = () => {
   const [email, setEmail] = useState("");

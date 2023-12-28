@@ -6,21 +6,23 @@ import { useEffect } from "react";
 import { TextInput } from "react-native-gesture-handler";
 import { gql, useMutation } from "@apollo/client";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-//регисрация логин ендпоинты
-const REGISTER = gql`
-  mutation ($data: RegistrationUserInput!) {
-    registerUser(data: $data) {
-      token
-    }
-  }
-`;
-
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase";
 const Registration = () => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
 
-  const [mutateFunction, { data, loading, error }] = useMutation(REGISTER);
+  const handleSubmit = async () => {
+    if (login && password) {
+      try {
+        await createUserWithEmailAndPassword(auth, login, password);
+        nav.push("Login");
+      } catch (err) {
+        console.log("Error:", err.message);
+      }
+    }
+  };
   const nav = useNavigation();
   return (
     <View
@@ -42,16 +44,9 @@ const Registration = () => {
             placeholder="Login"
             placeholderTextColor="#CCCCCA"
           />
+
           <TextInput
-            value={name}
-            onChangeText={(text) => setName(text)}
-            style={styles.input}
-            textAlign="center"
-            allowFontScaling
-            placeholder="Password"
-            placeholderTextColor="#CCCCCA"
-          />
-          <TextInput
+            secureTextEntry
             value={password}
             onChangeText={(text) => setPassword(text)}
             style={styles.input}
@@ -60,33 +55,7 @@ const Registration = () => {
             placeholder="Password"
             placeholderTextColor="#CCCCCA"
           />
-          <Button
-            title="Sign Up"
-            onPress={() => {
-              mutateFunction({
-                variables: {
-                  data: {
-                    login,
-                    name,
-                    password,
-                  },
-                },
-              })
-                .then((data) => {
-                  console.log(data);
-                  const token = data?.data?.regsterUser?.token;
-
-                  const storeData = async () => {
-                    try {
-                      await AsyncStorage.setItem("token", token);
-                    } catch (e) {}
-                  };
-                  storeData();
-                  nav.goBack();
-                })
-                .catch((e) => {});
-            }}
-          />
+          <Button title="Sign Up" onPress={handleSubmit} />
         </View>
       </View>
     </View>
@@ -114,7 +83,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     fontSize: 18,
     fontFamily: "IBMPlexMono_400Regular",
-    color: "CCCCCA",
+    color: "#CCCCCA",
   },
 });
 
