@@ -3,9 +3,15 @@ import TabNavigation from "./TabNavigation";
 import Login from "../screens/Login";
 import Splash from "../screens/Splash";
 import Registration from "../screens/Registration";
+import useAuth from "../hooks/useAuth";
 const Stack = createStackNavigator();
 
 const MainStackNavigation = () => {
+  const { user } = useAuth();
+
+  if (user) {
+    headerShownValue = false;
+  } else headerShownValue = true;
   return (
     <Stack.Navigator
       screenOptions={({ route }) => ({
