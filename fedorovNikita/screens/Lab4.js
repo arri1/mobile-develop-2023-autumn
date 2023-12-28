@@ -28,7 +28,7 @@ const Lab4 = () => {
         .then(() => {
           alert('Success', 'Password updated successfully!');
         })
-        .catch((error) => {w
+        .catch((error) => {
           alert('Error', `Failed to update password: ${error.message}`);
         });
     } else {
@@ -43,12 +43,14 @@ const Lab4 = () => {
         onPress={handleLogout}
         title={"Logout"}
       />
+      <View style={styles.space}></View>
       <Text>Enter new password:</Text>
       <TextInput
         secureTextEntry
         value={newPassword}
         onChangeText={setNewPassword}
       />
+      <View style={styles.space}></View>
       <Button title="Change Password" onPress={handleChangePassword} />
     </View>
   );
@@ -65,7 +67,11 @@ const styles = StyleSheet.create({
   },
   textinput: {
     borderColor: '#ecf0f1',
-  }
+  },
+  space: {
+    width: 20,
+    height: 20,
+  },
 });
 
 export default Lab4;
