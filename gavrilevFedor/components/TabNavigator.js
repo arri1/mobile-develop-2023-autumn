@@ -2,9 +2,10 @@ import * as React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useSelector } from "react-redux";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import lab1 from "../screens/Lab1";
-import lab2 from "../screens/Lab2";
-import lab3 from "../screens/Lab3";
+import Lab1 from "../screens/Lab1";
+import Lab2 from "../screens/Lab2";
+import Lab3 from "../screens/Lab3";
+import Lab5 from "../screens/Lab5";
 import SignOut from "./SignOut";
 
 const Tab = createBottomTabNavigator();
@@ -52,6 +53,10 @@ const TabNavigator = () => {
             iconName = focused
               ? "ios-information-circle"
               : "ios-information-circle-outline";
+          } else if (route.name == "Лабораторная работа 5") {
+            iconName = focused
+              ? "ios-information-circle"
+              : "ios-information-circle-outline";
           } else if (route.name == "Выйти") {
             iconName = focused
               ? "ios-information-circle"
@@ -64,7 +69,7 @@ const TabNavigator = () => {
     >
       <Tab.Screen
         name="Лабораторная работа 1"
-        component={lab1}
+        component={Lab1}
         options={{
           tabBarBadge: counter > 0 ? counter : null,
           tabBarLabel: "1",
@@ -72,13 +77,18 @@ const TabNavigator = () => {
       />
       <Tab.Screen
         name="Лабораторная работа 2"
-        component={lab2}
+        component={Lab2}
         options={{ tabBarLabel: "2" }}
       />
       <Tab.Screen
         name="Лабораторная работа 3"
-        component={lab3}
+        component={Lab3}
         options={{ tabBarLabel: "3" }}
+      />
+      <Tab.Screen
+        name="Лабораторная работа 5"
+        component={Lab5}
+        options={{ tabBarLabel: "5" }}
       />
       <Tab.Screen
         name="Выйти"
