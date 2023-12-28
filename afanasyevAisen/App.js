@@ -1,45 +1,22 @@
-import React, { useState } from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-const Counter = () => {
-  const [count, setCount] = useState(0);
+import Lab1 from './Lab1';
+import Lab2 from './Lab2';
 
-  const increment = () => {
-    setCount(count + 1);
-  };
 
-  const decrement = () => {
-    setCount(count - 1);
-  };
+const Tab = createBottomTabNavigator();
 
+function App() {
   return (
-    <View style={{ alignItems: 'center', marginTop: 50 }}>
-      <Text style={{ fontSize: 24, marginBottom: 20 }}>Счетчик: {count}</Text>
-      <View style={styles.buttonContainer}>
-        <Button title="Увеличить" onPress={increment} />
-        <View style={styles.buttonSpacing} />
-        <Button title="Уменьшить" onPress={decrement} />
-      </View>
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name="Lab1" component={Lab1} />
+        <Tab.Screen name="Lab2" component={Lab2} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
-};
+}
 
-const styles = StyleSheet.create({
-    container: {
-      alignItems: 'center',
-      marginTop: 50
-    },
-    counterText: {
-      fontSize: 24,
-      marginBottom: 20
-    },
-    buttonContainer: {
-      flexDirection: 'row',
-      alignItems: 'center'
-    },
-    buttonSpacing: {
-      width: 20
-    }
-  });
-  
-export default Counter;
+export default App;
