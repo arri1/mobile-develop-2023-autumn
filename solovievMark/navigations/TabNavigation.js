@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Lab1 from "../screens/lab1";
 import Lab2 from "../screens/lab2";
 import Lab3 from "../screens/lab3";
-import Settings from "../screens/Settings";
+import SettingsNavigation from "./SettingsNavigation";
 import Redux from "../screens/Redux";
 const Tab = createBottomTabNavigator();
 
@@ -57,8 +57,34 @@ const TabNavigation = () => {
           },
         }}
       />
-      <Tab.Screen name="Redux" component={Redux} />
-      <Tab.Screen name="Settings" component={Settings} />
+      <Tab.Screen
+        name="Redux"
+        component={Redux}
+        options={{
+          tabBarIcon: () => {
+            return (
+              <Image
+                source={require("../images/redux.png")}
+                style={styles.img}
+              />
+            );
+          },
+        }}
+      />
+      <Tab.Screen
+        name="Settings"
+        component={SettingsNavigation}
+        options={{
+          tabBarIcon: () => {
+            return (
+              <Image
+                source={require("../images/settings.png")}
+                style={styles.img}
+              />
+            );
+          },
+        }}
+      />
     </Tab.Navigator>
   );
 };
