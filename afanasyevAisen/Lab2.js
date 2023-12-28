@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, Button, FlatList, AsyncStorage } from 'react-native';
-import axios from "axios";
 const TodoList = () => {
   const [todo, setTodo] = useState('');
   const [todos, setTodos] = useState([]);
