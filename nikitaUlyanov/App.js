@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import * as Font from "expo-font";
 import Rec from "./screens/Rec";
@@ -6,6 +6,11 @@ import AppLoading from "expo-app-loading";
 import Profile from "./screens/Profile";
 import Lab2 from "./screens/UseEffect";
 import Main from "./screens/Main";
+
+import Login from "./screens/Login";
+import Reg from "./screens/Registration";
+
+import {firebase} from "./config";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -19,7 +24,8 @@ const fonts = () =>
     "mp-m": require("./assets/fonts/Manrope-Medium.ttf"),
   });
 
-export default function App() {
+function App(){
+
   const [fonts, setFont] = useState(false);
 
   const [stories, setStories] = useState([
@@ -237,81 +243,132 @@ export default function App() {
     },
   ]);
 
-  if (fonts) {
-    return (
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen
-            name="Main"
-            component={Main}
-            initialParams={{ storie: stories, post: posts }}
-            options={{
-              title: "Главная",
-              headerTitleStyle: {
-                fontFamily: "mp-eb",
-                fontSize: 28,
-                marginLeft: -168,
-                marginBottom: 10,
-              },
-            }}
-          />
-          <Stack.Screen
-            name="ToDoList"
-            component={Lab2}
-            options={{
-              title: "ToDoList",
-              headerTitleStyle: {
-                fontFamily: "mp-eb",
-                fontSize: 28,
-                marginLeft: -168,
-                marginBottom: 10,
-              },
-              headerLeft: () => null,
-              gesturesEnabled: false,
-            }}
-          />
-          <Stack.Screen
-            name="Profile"
-            component={Profile}
-            initialParams={{ post: posts }}
-            options={{
-              title: "Профиль",
-              headerTitleStyle: {
-                fontFamily: "mp-eb",
-                fontSize: 28,
-                marginLeft: -168,
-                marginBottom: 10,
-              },
-              headerLeft: () => null,
-              gesturesEnabled: false,
-            }}
-          />
-          <Stack.Screen
-            name="Rec"
-            component={Rec}
-            initialParams={{ post: posts }}
-            options={{
-              title: "Рекомендации",
-              headerTitleStyle: {
-                fontFamily: "mp-eb",
-                fontSize: 28,
-                marginLeft: -128,
-                marginBottom: 10,
-              },
-              headerLeft: () => null,
-              gesturesEnabled: false,
-            }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
-    );
-  } else {
-    return (
-      <AppLoading
-        startAsync={fonts}
-        onFinish={() => setFont(true)}
-        onError={console.warn}
-      />
-    );
+  const [initializing, setInitializing]=useState(true);
+  const [user,setUser] = useState();
+
+  function onAuthStateChanged(user){
+    setUser(user);
+    if(initializing) setInitializing(false);
   }
+
+
+  useEffect(() => {
+    const subscriber = firebase.auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber;
+  },[]);
+  if(initializing) return null;
+
+  if(!user){
+    
+    return(
+      <Stack.Navigator>
+      <Stack.Screen
+          name="Login"
+          component={Login}
+          options={{
+            title: "Авторизация",
+            headerTitleStyle: {
+              fontFamily: "mp-eb",
+              fontSize: 28,
+              marginLeft: -168,
+              marginBottom: 10,
+            },
+            headerLeft: () => null,
+            gesturesEnabled: false,
+          }}
+        />
+        <Stack.Screen
+          name="Registration"
+          component={Reg}
+          options={{
+            title: "Регистрация",
+            headerTitleStyle: {
+              fontFamily: "mp-eb",
+              fontSize: 28,
+              marginLeft: -168,
+              marginBottom: 10,
+            },
+            headerLeft: () => null,
+            gesturesEnabled: false,
+          }}
+        />
+      </Stack.Navigator>
+    )
+  }
+  return(
+  <Stack.Navigator>
+        <Stack.Screen
+          name="Main"
+          component={Main}
+          initialParams={{ storie: stories, post: posts }}
+          options={{
+            title: "Главная",
+            headerTitleStyle: {
+              fontFamily: "mp-eb",
+              fontSize: 28,
+              marginLeft: -168,
+              marginBottom: 10,
+            },
+            headerLeft: () => null,
+            gesturesEnabled: false,
+          }}
+        />
+        <Stack.Screen
+          name="ToDoList"
+          component={Lab2}
+          options={{
+            title: "ToDoList",
+            headerTitleStyle: {
+              fontFamily: "mp-eb",
+              fontSize: 28,
+              marginLeft: -168,
+              marginBottom: 10,
+            },
+            headerLeft: () => null,
+            gesturesEnabled: false,
+          }}
+        />
+        <Stack.Screen
+          name="Profile"
+          component={Profile}
+          initialParams={{ post: posts }}
+          options={{
+            title: "Профиль",
+            headerTitleStyle: {
+              fontFamily: "mp-eb",
+              fontSize: 28,
+              marginLeft: -168,
+              marginBottom: 10,
+            },
+            headerLeft: () => null,
+            gesturesEnabled: false,
+          }}
+        />
+        <Stack.Screen
+          name="Rec"
+          component={Rec}
+          initialParams={{ post: posts }}
+          options={{
+            title: "Рекомендации",
+            headerTitleStyle: {
+              fontFamily: "mp-eb",
+              fontSize: 28,
+              marginLeft: -128,
+              marginBottom: 10,
+            },
+            headerLeft: () => null,
+            gesturesEnabled: false,
+          }}
+        />
+      </Stack.Navigator>
+    )
+}
+
+
+export default () => {
+  return(
+  <NavigationContainer>
+    <App/>
+  </NavigationContainer>
+  )
 }

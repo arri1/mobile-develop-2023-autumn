@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import {
   StyleSheet,
@@ -10,12 +10,30 @@ import {
   Dimensions,
 } from "react-native";
 
-import * as Font from "expo-font";
+import { useNavigation } from "@react-navigation/native";
+import {firebase} from '../config';
+
 const numColumns = 3;
-export default function Profile({ navigation, route }) {
+
+
+const Profile = ({navigation, route}) => {
   const [posts, setPosts] = useState(
     Object.values(route.params?.post)[0]
   );
+  
+  const [name,setName]=useState('')
+
+useEffect(()=>{
+  firebase.firestore().collection('users')
+  .doc(firebase.auth().currentUser.uid).get()
+  .then((snapshot)=> {
+    if(snapshot.exists){
+      setName(snapshot.data())
+    }else{
+      console.log('User dont exists')
+    }
+  })
+})
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
@@ -55,7 +73,7 @@ export default function Profile({ navigation, route }) {
               <View style={styles.descText}>
                 <View>
                   <Text style={styles.usName}>
-                    404 Team
+                    {name.email}
                   </Text>
                 </View>
                 <View>
@@ -161,13 +179,13 @@ export default function Profile({ navigation, route }) {
     </View>
   );
 }
-
+export default Profile
 const styles = StyleSheet.create({
   main: {
     flex: 1,
     flexDirection: "column",
     justifyContent: "space-between",
-    paddingBottom: 10,
+    paddingBottom: 20,
     backgroundColor: "#fff",
   },
   profile: {
