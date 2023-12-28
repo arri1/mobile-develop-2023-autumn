@@ -17,7 +17,9 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import SignUp from "./auth/SignUp";
 import SignIn from "./auth/SignIn";
-import AuthDetails from "./auth/AuthDetails";
+
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 AppRegistry.registerComponent("MyApp", () => require("./App"));
 
@@ -71,34 +73,40 @@ const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 export default function App() {
   return (
-    <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName;
+    <Provider store={store}>
+      <NavigationContainer>
+        <Tab.Navigator
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ focused, color, size }) => {
+              let iconName;
 
-            if (route.name === "Home") {
-              iconName = focused ? "home" : "home-outline";
-            } else if (route.name === "News") {
-              iconName = focused ? "ios-list" : "ios-list-outline";
-            } else if (route.name === "UseMemo") {
-              iconName = focused ? "calculator" : "calculator-outline";
-            }
+              if (route.name === "Home") {
+                iconName = focused ? "home" : "home-outline";
+              } else if (route.name === "News") {
+                iconName = focused ? "ios-list" : "ios-list-outline";
+              } else if (route.name === "UseMemo") {
+                iconName = focused ? "calculator" : "calculator-outline";
+              }
 
-            // You can return any component that you like here!
-            return <Ionicons name={iconName} size={size} color={color} />;
-          },
-          tabBarActiveTintColor: "tomato",
-          tabBarInactiveTintColor: "gray",
-        })}
-      >
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="News" component={lab2} options={{ tabBarBadge: 3 }} />
-        <Tab.Screen name="UseMemo" component={lab3} />
-        <Tab.Screen name="SignUp" component={SignUp} />
-        <Tab.Screen name="SignIn" component={SignIn} />
-      </Tab.Navigator>
-    </NavigationContainer>
+              // You can return any component that you like here!
+              return <Ionicons name={iconName} size={size} color={color} />;
+            },
+            tabBarActiveTintColor: "tomato",
+            tabBarInactiveTintColor: "gray",
+          })}
+        >
+          <Tab.Screen name="Home" component={HomeScreen} />
+          <Tab.Screen
+            name="News"
+            component={lab2}
+            options={{ tabBarBadge: 3 }}
+          />
+          <Tab.Screen name="UseMemo" component={lab3} />
+          <Tab.Screen name="SignUp" component={SignUp} />
+          <Tab.Screen name="SignIn" component={SignIn} />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }
 
