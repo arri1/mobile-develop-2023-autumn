@@ -4,8 +4,10 @@ import Lab3 from "../screens/Lab3";
 import Lab4 from "../screens/Lab4";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Settings from "../screens/Settings";
+import se from "./settingsnavi";
 import { MaterialIcons } from "@expo/vector-icons";
 import { StyleSheet, Text, View, Image } from "react-native";
+import SettingsNavigation from "./settingsnavi";
 const Tab = createBottomTabNavigator();
 
 const TabNavigation = () => {
@@ -72,7 +74,7 @@ const TabNavigation = () => {
       />
       <Tab.Screen
         name="Settings"
-        component={Settings}
+        component={SettingsNavigation}
         options={{
           tabBarLabel: "Settings",
           tabBarIcon: ({ color, size }) => (
