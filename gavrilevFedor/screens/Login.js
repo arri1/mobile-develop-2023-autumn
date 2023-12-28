@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     paddingHorizontal: 15,
     paddingVertical: 10,
-    borderRadius: 15,
+    borderRadius: 20,
     marginTop: 5,
   },
   buttonContainer: {
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#1244C5",
     width: "100%",
     padding: 15,
-    borderRadius: 15,
+    borderRadius: 20,
     alignItems: "center",
   },
   buttonOutline: {
