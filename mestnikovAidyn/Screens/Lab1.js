@@ -1,6 +1,8 @@
-import { StatusBar } from 'expo-status-bar';
+
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { useState } from "react";
+import Button from "../components/Button";
+
 
 
 export default function App() {
@@ -8,28 +10,29 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>{number}</Text>
-      <TouchableOpacity style={styles.button}
+      <Button
+        title="x2"
         onPress={() => {
           setNumber(number * 2)
         }}>
-        <Text style={styles.text}>x2</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.button}
+      </Button>
+      <Button 
+          title="/2"
           onPress={() => {
             setNumber(number / 2);
           }}>
         <Text style={styles.text}>/2</Text>
-      </TouchableOpacity>
+      </Button>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: "end",
+    justifyContent: "center",
     alignItems: "center",
     flex: 1,
-    backgroundColor: '#696969',
+    backgroundColor: 'white',
     gap: 10,
   },
   text: {

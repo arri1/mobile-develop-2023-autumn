@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity} from "react-native";
-
+import Button from "../components/Button";
 const expensiveCalculation = () => {
   let i = 0;
   while (i < 100000000) i++;
@@ -27,35 +27,35 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Result: {memoNum}</Text>
-      <TouchableOpacity style={styles.button}
+      <Button 
+          title="useMemo"
           onPress={() => {
             memoIterate();
           }}>
-        <Text style={styles.text}>Expensive Calculation with useMemo</Text>
-      </TouchableOpacity>
+      </Button>
       <Text style={styles.text}>Result: {num}</Text>
-      <TouchableOpacity style={styles.button}
+      <Button 
+          title="no useMemo"
           onPress={() => {
             iterate();
           }}>
-        <Text style={styles.text}>Expensive Calculation without useMemo</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.button}
+      </Button>
+      <Button 
+          title="reset"
           onPress={() => {
             resetState();
           }}>
-        <Text style={styles.text}>reset</Text>
-      </TouchableOpacity>
+      </Button>
 
     </View>
   );
 };
 const styles = StyleSheet.create({
   container: {
-    justifyContent: "end",
+    justifyContent: "center",
     alignItems: "center",
     flex: 1,
-    backgroundColor: '#696969',
+    backgroundColor: 'white',
     gap: 10,
   },
   text: {
