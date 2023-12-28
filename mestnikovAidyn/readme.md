@@ -1,0 +1,1 @@
+https://www.figma.com/file/aBgvgrBZDx5LNPhpNAXwrb/%D0%9C%D0%B5%D1%81%D1%82%D0%BD%D0%B8%D0%BA%D0%BE%D0%B2-%D0%90?type=design&node-id=0-1&mode=design&t=CaTzmxeOpQFoboBo-0
