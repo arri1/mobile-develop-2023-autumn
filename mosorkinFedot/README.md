@@ -1,0 +1,1 @@
+https://www.figma.com/file/R4jJcSuDEyy8INaSX4St7y/mosorkinFedot?type=design&node-id=0-1&mode=design&t=d2abd2u75vHYdOu7-0

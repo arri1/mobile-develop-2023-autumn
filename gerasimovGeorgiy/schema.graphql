@@ -1,0 +1,373 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type AggregatePost {
+    count: Int!
+}
+
+type AggregateUser {
+    count: Int!
+}
+
+type AuthUserOutput {
+    token: String!
+    user: User!
+}
+
+type BatchPayload {
+    count: Int!
+}
+
+type Mutation {
+    authUser(data: AuthUserInput!): AuthUserOutput
+    createOnePost(data: PostCreateInput!): Post!
+    createOneUser(data: UserCreateInput!): User!
+    deleteManyPost(where: PostWhereInput): BatchPayload
+    deleteManyUser(where: UserWhereInput): BatchPayload
+    deleteOnePost(where: PostWhereUniqueInput!): Post
+    deleteOneUser(where: UserWhereUniqueInput!): User
+    registerUser(data: RegistrationUserInput!): AuthUserOutput
+    updateManyPost(data: PostUpdateManyMutationInput, where: PostWhereInput): BatchPayload
+    updateManyUser(data: UserUpdateManyMutationInput, where: UserWhereInput): BatchPayload
+    updateOnePost(data: PostUpdateInput!, where: PostWhereUniqueInput!): Post!
+    updateOneUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User!
+    updateUser(data: UserUpdateInput!): User!
+    upsertOnePost(create: PostCreateInput!, update: PostUpdateInput!, where: PostWhereUniqueInput!): Post
+    upsertOneUser(create: UserCreateInput!, update: UserUpdateInput!, where: UserWhereUniqueInput!): User
+}
+
+type Post {
+    id: String!
+    text: String
+    title: String!
+    user: User!
+    userId: String!
+}
+
+type Query {
+    aggregatePost(cursor: PostWhereUniqueInput, distinct: PostDistinctFieldEnum, orderBy: [PostOrderByInput!], skip: Int, take: Int, where: PostWhereInput): AggregatePost
+    aggregateUser(cursor: UserWhereUniqueInput, distinct: UserDistinctFieldEnum, orderBy: [UserOrderByInput!], skip: Int, take: Int, where: UserWhereInput): AggregateUser
+    findFirstPost(cursor: PostWhereUniqueInput, distinct: PostDistinctFieldEnum, orderBy: [PostOrderByInput!], skip: Int, take: Int, where: PostWhereInput): [Post!]
+    findFirstUser(cursor: UserWhereUniqueInput, distinct: UserDistinctFieldEnum, orderBy: [UserOrderByInput!], skip: Int, take: Int, where: UserWhereInput): [User!]
+    findManyPost(cursor: PostWhereUniqueInput, distinct: PostDistinctFieldEnum, orderBy: [PostOrderByInput!], skip: Int, take: Int, where: PostWhereInput): [Post!]
+    findManyPostCount(cursor: PostWhereUniqueInput, distinct: PostDistinctFieldEnum, orderBy: [PostOrderByInput!], skip: Int, take: Int, where: PostWhereInput): Int!
+    findManyUser(cursor: UserWhereUniqueInput, distinct: UserDistinctFieldEnum, orderBy: [UserOrderByInput!], skip: Int, take: Int, where: UserWhereInput): [User!]
+    findManyUserCount(cursor: UserWhereUniqueInput, distinct: UserDistinctFieldEnum, orderBy: [UserOrderByInput!], skip: Int, take: Int, where: UserWhereInput): Int!
+    findOnePost(where: PostWhereUniqueInput!): Post
+    findOneUser(where: UserWhereUniqueInput!): User
+    user: User
+}
+
+type User {
+    group: String
+    id: String!
+    login: String!
+    name: String
+    posts: [Post!]!
+}
+
+enum PostDistinctFieldEnum {
+    id
+    text
+    title
+    userId
+}
+
+enum QueryMode {
+    default
+    insensitive
+}
+
+enum SortOrder {
+    asc
+    desc
+}
+
+enum UserDistinctFieldEnum {
+    group
+    id
+    login
+    name
+    password
+}
+
+scalar DateTime
+
+input AuthUserInput {
+    login: String!
+    password: String!
+}
+
+input NestedStringFilter {
+    contains: String
+    endsWith: String
+    equals: String
+    gt: String
+    gte: String
+    in: [String!]
+    lt: String
+    lte: String
+    not: NestedStringFilter
+    notIn: [String!]
+    startsWith: String
+}
+
+input NestedStringNullableFilter {
+    contains: String
+    endsWith: String
+    equals: String
+    gt: String
+    gte: String
+    in: [String!]
+    lt: String
+    lte: String
+    not: NestedStringNullableFilter
+    notIn: [String!]
+    startsWith: String
+}
+
+input NullableStringFieldUpdateOperationsInput {
+    set: String
+}
+
+input PostCreateInput {
+    id: String
+    text: String
+    title: String!
+    user: UserCreateOneWithoutPostsInput!
+}
+
+input PostCreateManyWithoutUserInput {
+    connect: [PostWhereUniqueInput!]
+    create: [PostCreateWithoutUserInput!]
+}
+
+input PostCreateWithoutUserInput {
+    id: String
+    text: String
+    title: String!
+}
+
+input PostListRelationFilter {
+    every: PostWhereInput
+    none: PostWhereInput
+    some: PostWhereInput
+}
+
+input PostOrderByInput {
+    id: SortOrder
+    text: SortOrder
+    title: SortOrder
+    userId: SortOrder
+}
+
+input PostScalarWhereInput {
+    AND: [PostScalarWhereInput!]
+    NOT: [PostScalarWhereInput!]
+    OR: [PostScalarWhereInput!]
+    id: StringFilter
+    text: StringNullableFilter
+    title: StringFilter
+    userId: StringFilter
+}
+
+input PostUpdateInput {
+    id: StringFieldUpdateOperationsInput
+    text: NullableStringFieldUpdateOperationsInput
+    title: StringFieldUpdateOperationsInput
+    user: UserUpdateOneRequiredWithoutPostsInput
+}
+
+input PostUpdateManyDataInput {
+    id: StringFieldUpdateOperationsInput
+    text: NullableStringFieldUpdateOperationsInput
+    title: StringFieldUpdateOperationsInput
+}
+
+input PostUpdateManyMutationInput {
+    id: StringFieldUpdateOperationsInput
+    text: NullableStringFieldUpdateOperationsInput
+    title: StringFieldUpdateOperationsInput
+}
+
+input PostUpdateManyWithWhereNestedInput {
+    data: PostUpdateManyDataInput!
+    where: PostScalarWhereInput!
+}
+
+input PostUpdateManyWithoutUserInput {
+    connect: [PostWhereUniqueInput!]
+    create: [PostCreateWithoutUserInput!]
+    delete: [PostWhereUniqueInput!]
+    deleteMany: [PostScalarWhereInput!]
+    disconnect: [PostWhereUniqueInput!]
+    set: [PostWhereUniqueInput!]
+    update: [PostUpdateWithWhereUniqueWithoutUserInput!]
+    updateMany: [PostUpdateManyWithWhereNestedInput!]
+    upsert: [PostUpsertWithWhereUniqueWithoutUserInput!]
+}
+
+input PostUpdateWithWhereUniqueWithoutUserInput {
+    data: PostUpdateWithoutUserDataInput!
+    where: PostWhereUniqueInput!
+}
+
+input PostUpdateWithoutUserDataInput {
+    id: StringFieldUpdateOperationsInput
+    text: NullableStringFieldUpdateOperationsInput
+    title: StringFieldUpdateOperationsInput
+}
+
+input PostUpsertWithWhereUniqueWithoutUserInput {
+    create: PostCreateWithoutUserInput!
+    update: PostUpdateWithoutUserDataInput!
+    where: PostWhereUniqueInput!
+}
+
+input PostWhereInput {
+    AND: [PostWhereInput!]
+    NOT: [PostWhereInput!]
+    OR: [PostWhereInput!]
+    id: StringFilter
+    text: StringNullableFilter
+    title: StringFilter
+    user: UserWhereInput
+    userId: StringFilter
+}
+
+input PostWhereUniqueInput {
+    id: String
+}
+
+input RegistrationUserInput {
+    login: String!
+    name: String
+    password: String!
+}
+
+input StringFieldUpdateOperationsInput {
+    set: String
+}
+
+input StringFilter {
+    contains: String
+    endsWith: String
+    equals: String
+    gt: String
+    gte: String
+    in: [String!]
+    lt: String
+    lte: String
+    mode: QueryMode
+    not: NestedStringFilter
+    notIn: [String!]
+    startsWith: String
+}
+
+input StringNullableFilter {
+    contains: String
+    endsWith: String
+    equals: String
+    gt: String
+    gte: String
+    in: [String!]
+    lt: String
+    lte: String
+    mode: QueryMode
+    not: NestedStringNullableFilter
+    notIn: [String!]
+    startsWith: String
+}
+
+input UserCreateInput {
+    group: String
+    id: String
+    login: String!
+    name: String
+    password: String!
+    posts: PostCreateManyWithoutUserInput
+}
+
+input UserCreateOneWithoutPostsInput {
+    connect: UserWhereUniqueInput
+    create: UserCreateWithoutPostsInput
+}
+
+input UserCreateWithoutPostsInput {
+    group: String
+    id: String
+    login: String!
+    name: String
+    password: String!
+}
+
+input UserOrderByInput {
+    group: SortOrder
+    id: SortOrder
+    login: SortOrder
+    name: SortOrder
+    password: SortOrder
+}
+
+input UserRelationFilter {
+    is: UserWhereInput
+    isNot: UserWhereInput
+}
+
+input UserUpdateInput {
+    group: NullableStringFieldUpdateOperationsInput
+    id: StringFieldUpdateOperationsInput
+    login: StringFieldUpdateOperationsInput
+    name: NullableStringFieldUpdateOperationsInput
+    password: StringFieldUpdateOperationsInput
+    posts: PostUpdateManyWithoutUserInput
+}
+
+input UserUpdateManyMutationInput {
+    group: NullableStringFieldUpdateOperationsInput
+    id: StringFieldUpdateOperationsInput
+    login: StringFieldUpdateOperationsInput
+    name: NullableStringFieldUpdateOperationsInput
+    password: StringFieldUpdateOperationsInput
+}
+
+input UserUpdateOneRequiredWithoutPostsInput {
+    connect: UserWhereUniqueInput
+    create: UserCreateWithoutPostsInput
+    update: UserUpdateWithoutPostsDataInput
+    upsert: UserUpsertWithoutPostsInput
+}
+
+input UserUpdateWithoutPostsDataInput {
+    group: NullableStringFieldUpdateOperationsInput
+    id: StringFieldUpdateOperationsInput
+    login: StringFieldUpdateOperationsInput
+    name: NullableStringFieldUpdateOperationsInput
+    password: StringFieldUpdateOperationsInput
+}
+
+input UserUpsertWithoutPostsInput {
+    create: UserCreateWithoutPostsInput!
+    update: UserUpdateWithoutPostsDataInput!
+}
+
+input UserWhereInput {
+    AND: [UserWhereInput!]
+    NOT: [UserWhereInput!]
+    OR: [UserWhereInput!]
+    group: StringNullableFilter
+    id: StringFilter
+    login: StringFilter
+    name: StringNullableFilter
+    password: StringFilter
+    posts: PostListRelationFilter
+}
+
+input UserWhereUniqueInput {
+    id: String
+    login: String
+}

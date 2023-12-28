@@ -1,33 +1,19 @@
-import { Text, TouchableOpacity, View } from "react-native";
-import { useState } from "react";
+import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import MainStackNavigation from "./navigations/MainStackNavigation";
+import { NavigationContainer } from "@react-navigation/native";
+import Toast from "react-native-toast-message";
+const client = new ApolloClient({
+  uri: "http://194.59.247.134:1414/",
+  cache: new InMemoryCache(),
+});
 
 export default function App() {
-  const [count, setCount] = useState(0);
   return (
-    <View
-      style={{
-        justifyContent: "center",
-        alignItems: "center",
-        flex: 1,
-        gap: 10,
-      }}
-    >
-      <Text>{count}</Text>
-      <TouchableOpacity
-        style={{
-          height: 40,
-          width: 200,
-          alignItems: "center",
-          justifyContent: "center",
-          borderRadius: 14,
-          backgroundColor: "red",
-        }}
-        onPress={() => {
-          setCount(count + 1);
-        }}
-      >
-        <Text style={{ color: "white" }}>Кнопка</Text>
-      </TouchableOpacity>
-    </View>
+    <ApolloProvider client={client}>
+      <NavigationContainer>
+        <MainStackNavigation />
+      </NavigationContainer>
+      <Toast />
+    </ApolloProvider>
   );
 }
