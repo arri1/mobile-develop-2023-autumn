@@ -1,43 +1,45 @@
 import {Text, TouchableOpacity, View, StyleSheet} from 'react-native';
 import {useState} from 'react';
-import Button from '../components.js/Button';
+import Button from '../components/Button';
 
 export default function Lab1() {
   const [count, setCount] = useState(1);
 
   return (
     <View style={styles.container}>
-      <Text>{count}</Text>
-      <Button
-        onPress={() => {
-          setCount(count + 1);
-        }}
-        title={'+ 1'}
-      />
-      <Button
-        onPress={() => {
-          setCount(count - 1);
-        }}
-        title={'- 1'}
-      />
-      <Button
-        onPress={() => {
-          setCount(count * 2);
-        }}
-        title={'* 2'}
-      />
-      <Button
-        onPress={() => {
-          setCount(count / 2);
-        }}
-        title={'/ 2'}
-      />
-      <Button
-        onPress={() => {
-          setCount(count * 0);
-        }}
-        title={'Reset'}
-      />
+      <View style={styles.whitecontainer}>
+        <Text style={styles.text}>{count}</Text>
+        <Button
+          onPress={() => {
+            setCount(count + 10);
+          }}
+          title={'+ 10'}
+        />
+        <Button
+          onPress={() => {
+            setCount(count - 10);
+          }}
+          title={'- 10'}
+        />
+        <Button
+          onPress={() => {
+            setCount(count / 5);
+          }}
+          title={'/ 5'}
+        />
+        <Button
+          onPress={() => {
+            setCount(count * 5);
+          }}
+          title={'* 5'}
+        />
+        <Button
+          onPress={() => {
+            setCount(count * 0);
+          }}
+          title={'Reset'}
+        />
+      </View>
     </View>
   );
 }
@@ -47,17 +49,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flex: 1,
     gap: 10,
+    backgroundColor: 'rgb(25, 28, 41)',
   },
   text: {
-    color: 'white',
-    fontSize: 24,
+    marginTop: 30,
+    marginBottom: 10,
+    color: 'rgb(255, 255, 255)',
+    fontSize: 32,
   },
-  button: {
-    height: 40,
-    width: 200,
+  whitecontainer: {
+    width: 220,
+    height: 268,
     alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 14,
-    backgroundColor: 'red',
+    backgroundColor: 'rgb(48, 46, 60)',
+    borderRadius: 20,
   },
 });

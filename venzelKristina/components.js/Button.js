@@ -1,23 +1,23 @@
-import { Text, TouchableOpacity, ActivityIndicator } from "react-native";
+import {Text, TouchableOpacity, ActivityIndicator} from 'react-native';
 
-const Button = ({ onPress, title, loading }) => {
+const Button = ({onPress, title, loading}) => {
   return (
     <TouchableOpacity
       disabled={loading}
       style={{
-        height: 40,
-        width: 200,
-        alignItems: "center",
-        justifyContent: "center",
-        borderRadius: 14,
-        backgroundColor: "red",
+        height: 30,
+        width: 132,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 15,
+        backgroundColor: 'rgb(132, 77, 222)',
+        marginTop: 5,
       }}
-      onPress={onPress}
-    >
+      onPress={onPress}>
       {loading ? (
         <ActivityIndicator />
       ) : (
-        <Text style={{ color: "white" }}>{title}</Text>
+        <Text style={{color: 'white'}}>{title}</Text>
       )}
     </TouchableOpacity>
   );

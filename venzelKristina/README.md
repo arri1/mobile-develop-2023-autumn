@@ -1,0 +1,1 @@
+https://www.figma.com/file/tj6mM4uJnwG1KP2csY8TwP/ВензельКристинаФИИТ-20?type=design&node-id=0-1&mode=design&t=eW1EA40nSLtGnJ3C-0
