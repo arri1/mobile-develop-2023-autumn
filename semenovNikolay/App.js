@@ -9,6 +9,8 @@ import Lab3 from "./screens/Lab3";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import SignUp from "./auth/SignUp";
 import SignIn from "./auth/SignIn";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 AppRegistry.registerComponent("MyApp", () => require("./App"));
 
@@ -16,7 +18,8 @@ const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
       <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
@@ -49,7 +52,8 @@ export default function App() {
         <Tab.Screen name="Lab3" component={Lab3} />
         <Tab.Screen name="SignUp" component={SignUp} />
         <Tab.Screen name="SignIn" component={SignIn} />
-      </Tab.Navigator>
-    </NavigationContainer>
+        </Tab.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }
