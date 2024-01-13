@@ -7,7 +7,9 @@ const Lab1 = () => {
   return (
     <View style={styles.bbb}>
         <Text>{count}</Text>
-        <Button onPress={() => {setCount(count + 1);}}>
+        <Button 
+        title="+1"
+        onPress={() => {setCount(count + 1);}}>
             title={"+1"}
         </Button>
     </View>
