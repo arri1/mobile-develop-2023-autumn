@@ -6,6 +6,8 @@ import {
   StatusBar,
   StyleSheet,
 } from "react-native";
+import Button from "../components/Button";
+
 
 const Lab2 = () => {
   const [backgroundColor, setBackgroundColor] = useState("white");
@@ -26,44 +28,31 @@ const Lab2 = () => {
         backgroundColor,
       }}
     >
-      <TouchableOpacity
+      <Button
+        title="white"
         onPress={() => handleColorChange("white")}
         style={styles.commonButton}
-      >
-        <Text style={styles.commonText}>White</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
+      />
+      <Button
+        title="pink"
         onPress={() => handleColorChange("pink")}
         style={styles.commonButton}
-      >
-        <Text style={styles.commonText}>Pink</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
+      />
+      <Button
+        title="yellow"
         onPress={() => handleColorChange("yellow")}
         style={styles.commonButton}
-      >
-        <Text style={styles.commonText}>Yellow</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
+      />
+      <Button
+        title="red"
         onPress={() => handleColorChange("red")}
         style={styles.commonButton}
-      >
-        <Text style={styles.commonText}>Red</Text>
-      </TouchableOpacity>
+      />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  commonButton: {
-    alignItems: "center",
-    justifyContent: "center",
-    marginVertical: 5,
-    borderRadius: 1,
-    backgroundColor: "#87cefa",
-    width: 100,
-    height: 80,
-  },
   commonText: {
     fontSize: 20,
     fontWeight: "bold",
