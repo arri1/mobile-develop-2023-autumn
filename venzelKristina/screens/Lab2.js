@@ -5,7 +5,7 @@ import Button from '../components/Button';
 
 const Lab2 = () => {
   const [joke, setJoke] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false); 
 
   const getFunc = () => {
     setLoading(true);
@@ -17,7 +17,7 @@ const Lab2 = () => {
       })
       .catch(error => {
         console.error('Ошибка при получении шутки:', error);
-        setLoading(false);
+        setLoading(false); 
       });
   };
   useEffect(() => {
@@ -39,31 +39,4 @@ const Lab2 = () => {
     </View>
   );
 };
-const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: 1,
-    gap: 10,
-    backgroundColor: 'rgb(25, 28, 41)',
-  },
-  text: {
-    textAlign: 'center',
-    verticalAlign: 'middle',
-    marginTop: 95,
-    color: 'rgb(255, 255, 255)',
-    fontSize: 15,
-    marginHorizontal: 10,
-  },
-  whitecontainer: {
-    display: 'flex',
-    marginBottom: -55,
-    width: 220,
-    height: 268,
-    alignItems: 'center',
-    backgroundColor: 'rgb(48, 46, 60)',
-    borderRadius: 20,
-  },
-});
-
 export default Lab2;
