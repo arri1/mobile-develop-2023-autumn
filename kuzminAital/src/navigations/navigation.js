@@ -2,6 +2,7 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
+
 import Laba1 from "../../assets/svg/icon-laba1";
 import Laba2 from "../../assets/svg/icon-laba2";
 import Laba3 from "../../assets/svg/icon-laba3";
@@ -14,7 +15,7 @@ import Task3 from "../screens/task3";
 import Taskredux from "../screens/redux";
 import Auth from "../screens/auth";
 import Logout from "../screens/logout";
-
+import ChangeEmail from "../screens/changeemail";
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
@@ -27,6 +28,7 @@ const TabNavigator = () => (
           route.name === "lab3" ? <Laba3 /> :
           route.name === "redux" ? <Redux /> :
           route.name === "logout" ? <Laba4 /> :
+          route.name === "settings" ? <Laba4 /> :
           null;
       },
     })}
@@ -36,6 +38,7 @@ const TabNavigator = () => (
     <Tab.Screen name="lab3" component={Task3} />
     <Tab.Screen name="redux" component={Taskredux} />
     <Tab.Screen name="logout" component={Logout} />
+    <Tab.Screen name="settings" component={ChangeEmail} />
   </Tab.Navigator>
 );
 
@@ -48,6 +51,7 @@ const Navigation = () => {
     >
       <Stack.Screen name="Auth" component={Auth} />
       <Stack.Screen name="Tab" component={TabNavigator} />
+      <Stack.Screen name="ChangeEmail" component={ChangeEmail} />
     </Stack.Navigator>
   );
 };
