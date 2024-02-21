@@ -3,6 +3,7 @@ import Navigation from "./src/navigations/navigation";
 
 import { Provider } from "react-redux";
 import store from "./src/redux";
+import Toast from "react-native-toast-message";
 
 
 
@@ -12,6 +13,7 @@ const App = () => {
         <NavigationContainer>
           <Navigation />
         </NavigationContainer>
+        <Toast />
       </Provider>
   );
 };
