@@ -50,7 +50,7 @@ const App = () => {
                 <TouchableOpacity 
                     onPress={() => handleEditTask(index)}> 
                     <Text 
-                        style={styles.editButton}>Изменить</Text> 
+                        style={styles.editButton}>Поменять</Text> 
                 </TouchableOpacity> 
                 <TouchableOpacity 
                     onPress={() => handleDeleteTask(index)}> 
