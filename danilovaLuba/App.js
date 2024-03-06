@@ -16,7 +16,7 @@ const screenOptions = (route, color) => {
       iconName = 'home';
       break;
     case 'Friends':
-      iconName = 'folder1';
+      iconName = 'adduser';
       break;
     default:
       break;
