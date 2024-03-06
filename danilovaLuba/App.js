@@ -50,24 +50,23 @@ const App = () => {
                 <TouchableOpacity 
                     onPress={() => handleEditTask(index)}> 
                     <Text 
-                        style={styles.editButton}>Edit</Text> 
+                        style={styles.editButton}>Изменить</Text> 
                 </TouchableOpacity> 
                 <TouchableOpacity 
                     onPress={() => handleDeleteTask(index)}> 
                     <Text 
-                        style={styles.deleteButton}>Delete</Text> 
+                        style={styles.deleteButton}>Удалить</Text> 
                 </TouchableOpacity> 
             </View> 
         </View> 
     ); 
   
     return ( 
-        <View style={styles.container}> 
-            <Text style={styles.heading}>Geeksforgeeks</Text> 
-            <Text style={styles.title}>ToDo App</Text> 
+        <View style={styles.container}>  
+            <Text style={styles.title}></Text> 
             <TextInput 
                 style={styles.input} 
-                placeholder="Enter task"
+                placeholder="Введите задачу"
                 value={task} 
                 onChangeText={(text) => setTask(text)} 
             /> 
@@ -75,7 +74,7 @@ const App = () => {
                 style={styles.addButton} 
                 onPress={handleAddTask}> 
                 <Text style={styles.addButtonText}> 
-                    {editIndex !== -1 ? "Update Task" : "Add Task"} 
+                    {editIndex !== -1 ? "Обновить задачу" : "Добавить задачу"} 
                 </Text> 
             </TouchableOpacity> 
             <FlatList 
