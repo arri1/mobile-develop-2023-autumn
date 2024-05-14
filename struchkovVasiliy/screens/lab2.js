@@ -1,0 +1,59 @@
+import React, { useEffect, useState } from "react";
+import { ActivityIndicator, View, Text, Button as RNButton } from "react-native";
+import { StyleSheet } from 'react-native';
+import axios from "axios";
+
+const Lab2 = () => {
+  const [activity, setActivity] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const getActivity = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.get("https://www.boredapi.com/api/activity");
+      setActivity(response?.data?.activity || "No activity available");
+    } catch (error) {
+      console.error("Ошибка при получении активности:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getActivity();
+  }, []);
+
+  return (
+    <View style={styles.container}>
+      {loading ? (
+        <ActivityIndicator size="large" color="black" />
+      ) : (
+        <>
+          <Text style={styles.activityText}>{activity}</Text>
+          <RNButton
+            onPress={getActivity}
+            title="Обновить"
+            color="black"
+          />
+        </>
+      )}
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 10,
+  },
+  activityText: {
+    fontSize: 18,
+    textAlign: "center",
+    marginBottom: 20,
+    color: "black",
+  },
+});
+
+export default Lab2;
