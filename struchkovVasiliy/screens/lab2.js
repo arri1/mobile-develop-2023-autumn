@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { ActivityIndicator, View, Text, Button as RNButton } from "react-native";
-import { StyleSheet } from 'react-native';
+import {
+  ActivityIndicator,
+  View,
+  Text,
+  Button as RNButton,
+} from "react-native";
+import { StyleSheet } from "react-native";
 import axios from "axios";
 
 const Lab2 = () => {
@@ -30,11 +35,7 @@ const Lab2 = () => {
       ) : (
         <>
           <Text style={styles.activityText}>{activity}</Text>
-          <RNButton
-            onPress={getActivity}
-            title="Обновить"
-            color="black"
-          />
+          <RNButton onPress={getActivity} title="Обновить" color="black" />
         </>
       )}
     </View>

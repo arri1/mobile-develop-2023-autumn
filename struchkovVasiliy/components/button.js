@@ -1,5 +1,10 @@
 import React from "react";
-import { Text, TouchableOpacity, ActivityIndicator, StyleSheet } from "react-native";
+import {
+  Text,
+  TouchableOpacity,
+  ActivityIndicator,
+  StyleSheet,
+} from "react-native";
 
 const Button = ({ onPress, title, loading }) => {
   return (

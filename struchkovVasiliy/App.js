@@ -10,15 +10,15 @@ export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator
-      screenOptions={({ route }) => ({
-      tabBarActiveTintColor: "black",
-      tabBarInactiveTintColor: "#888888",
-      tabBarLabelStyle: {
-        fontSize: 16,
-        fontWeight: "bold",
-      },
-    })}
->
+        screenOptions={({ route }) => ({
+          tabBarActiveTintColor: "black",
+          tabBarInactiveTintColor: "#888888",
+          tabBarLabelStyle: {
+            fontSize: 16,
+            fontWeight: "bold",
+          },
+        })}
+      >
         <Tab.Screen
           name="Lab1"
           component={Lab1}
