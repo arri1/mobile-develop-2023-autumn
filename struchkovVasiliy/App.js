@@ -1,21 +1,31 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { NavigationContainer } from "@react-navigation/native";
+import Lab1 from "./screens/lab1";
+
+const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>struchkovVasiliy</Text>
-      <Text>IVT-20-1</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarActiveTintColor: "black",
+          tabBarInactiveTintColor: "#888888",
+          tabBarLabelStyle: {
+            fontSize: 16,
+            fontWeight: "bold",
+          },
+        })}
+      >
+        <Tab.Screen
+          name="Lab1"
+          component={Lab1}
+          options={{
+            tabBarLabel: "Лаб 1",
+          }}
+        />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
