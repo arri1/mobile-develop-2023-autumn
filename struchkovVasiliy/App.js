@@ -1,48 +1,31 @@
-import { Text, TouchableOpacity, View } from "react-native";
-import { useState } from "react";
+import React from "react";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { NavigationContainer } from "@react-navigation/native";
+import Lab1 from "./screens/lab1";
+
+const Tab = createBottomTabNavigator();
 
 export default function App() {
-  const [count, setCount] = useState(0);
   return (
-    <View 
-    style={{
-      justifyContent: "center",
-      alignItems: "center",
-      flex: 1,
-      gap: 10,
-      }}
-    >
-      <TouchableOpacity
-        style={{
-          height: 40,
-          width: 100,
-          alignItems: "center",
-          justifyContent: "center",
-          borderRadius: 14,
-          backgroundColor: "black",
-        }}
-        onPress={() => {
-          setCount(count - 1);
-        }}
+    <NavigationContainer>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarActiveTintColor: "black",
+          tabBarInactiveTintColor: "#888888",
+          tabBarLabelStyle: {
+            fontSize: 16,
+            fontWeight: "bold",
+          },
+        })}
       >
-        <Text style={{ color: "white" }}>-1</Text>
-      </TouchableOpacity>
-      <Text>{count}</Text>
-      <TouchableOpacity
-        style={{
-          height: 40,
-          width: 100,
-          alignItems: "center",
-          justifyContent: "center",
-          borderRadius: 14,
-          backgroundColor: "black",
-        }}
-        onPress={() => {
-          setCount(count + 1);
-        }}
-      >
-        <Text style={{ color: "white" }}>+1</Text>
-      </TouchableOpacity>
-    </View>
+        <Tab.Screen
+          name="Lab1"
+          component={Lab1}
+          options={{
+            tabBarLabel: "Лаб 1",
+          }}
+        />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
