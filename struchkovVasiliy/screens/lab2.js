@@ -1,24 +1,19 @@
-import React, { useEffect, useState } from "react";
-import {
-  ActivityIndicator,
-  View,
-  Text,
-  Button as RNButton,
-} from "react-native";
-import { StyleSheet } from "react-native";
-import axios from "axios";
+import React, { useEffect, useState } from 'react';
+import { ActivityIndicator, View, Text, Button as RNButton, StyleSheet } from 'react-native';
+
+import axios from 'axios';
 
 const Lab2 = () => {
-  const [activity, setActivity] = useState("");
+  const [activity, setActivity] = useState('');
   const [loading, setLoading] = useState(false);
 
   const getActivity = async () => {
     setLoading(true);
     try {
-      const response = await axios.get("https://www.boredapi.com/api/activity");
-      setActivity(response?.data?.activity || "No activity available");
+      const response = await axios.get('https://www.boredapi.com/api/activity');
+      setActivity(response?.data?.activity || 'No activity available');
     } catch (error) {
-      console.error("Ошибка при получении активности:", error);
+      /* empty */
     } finally {
       setLoading(false);
     }
@@ -45,15 +40,15 @@ const Lab2 = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     gap: 10,
   },
   activityText: {
     fontSize: 18,
-    textAlign: "center",
+    textAlign: 'center',
     marginBottom: 20,
-    color: "black",
+    color: 'black',
   },
 });
 

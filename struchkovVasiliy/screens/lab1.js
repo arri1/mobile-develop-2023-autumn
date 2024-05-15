@@ -1,7 +1,5 @@
-import React, { useState } from "react";
-import { Text, View } from "react-native";
-import { StyleSheet } from "react-native";
-import Button from "../components/button";
+import React, { useState } from 'react';
+import { Text, View, StyleSheet, Button } from 'react-native';
 
 const Lab1 = () => {
   const [count, setCount] = useState(0);
@@ -26,12 +24,12 @@ const Lab1 = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   count: {
     fontSize: 24,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginVertical: 20,
   },
 });
