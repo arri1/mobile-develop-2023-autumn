@@ -1,10 +1,11 @@
+/* eslint-disable import/no-named-as-default-member */
 /* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable no-empty-pattern */
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import Lab1 from './screens/lab1';
 import Lab2 from './screens/lab2';
+import Lab3 from './screens/lab3';
 
 const Tab = createBottomTabNavigator();
 
@@ -12,6 +13,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator
+        // eslint-disable-next-line no-empty-pattern
         screenOptions={({}) => ({
           tabBarActiveTintColor: 'black',
           tabBarInactiveTintColor: '#888888',
@@ -33,6 +35,13 @@ export default function App() {
           component={Lab2}
           options={{
             tabBarLabel: 'Лаб 2',
+          }}
+        />
+        <Tab.Screen
+          name="Lab3"
+          component={Lab3}
+          options={{
+            tabBarLabel: 'Лаб 3',
           }}
         />
       </Tab.Navigator>
