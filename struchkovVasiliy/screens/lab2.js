@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, View, Text, Button as RNButton, StyleSheet } from 'react-native';
+import {
+  ActivityIndicator,
+  View,
+  Text,
+  Button as RNButton,
+  StyleSheet,
+} from 'react-native';
 
 import axios from 'axios';
 
