@@ -1,4 +1,4 @@
-// eslint-disable-next-line func-names
+/* eslint-disable func-names */
 module.exports = function (api) {
   api.cache(true);
   return {
