@@ -1,3 +1,5 @@
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable no-unused-vars */
 // Import the functions you need from the SDKs you need
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
@@ -20,11 +22,9 @@ let app;
 if (firebase.apps.length === 0) {
   app = firebase.initializeApp(firebaseConfig);
 } else {
-  // eslint-disable-next-line no-unused-vars
   app = firebase.app();
 }
 
 const auth = firebase.auth();
 
-// eslint-disable-next-line import/prefer-default-export
 export { auth };

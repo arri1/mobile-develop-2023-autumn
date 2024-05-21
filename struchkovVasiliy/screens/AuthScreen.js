@@ -1,21 +1,35 @@
 /* eslint-disable no-shadow */
-/* eslint-disable react/prop-types */
-import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet, Text } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import {
+  View,
+  TextInput,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import { auth } from '../firebase';
 
-const AuthScreen = ({ setAuthenticated }) => {
+function AuthScreen() {
   const navigation = useNavigation();
+  const isAuthenticated = useSelector((state) => state.auth.authenticated);
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigation.navigate('HomeTabs');
+    }
+  }, [isAuthenticated, navigation]);
 
   const handleSignIn = () => {
     auth
       .signInWithEmailAndPassword(email, password)
       .then(() => {
-        setAuthenticated(true);
+        dispatch({ type: 'SET_AUTHENTICATED', payload: true });
       })
       .catch((error) => {
         setError(error.message);
@@ -42,17 +56,22 @@ const AuthScreen = ({ setAuthenticated }) => {
         secureTextEntry
       />
       {error && <Text style={styles.error}>{error}</Text>}
-      <Button title="Войти" onPress={handleSignIn} />
-      <Button title="Зарегистрироваться" onPress={handleSignUp} />
+      <TouchableOpacity style={styles.button} onPress={handleSignIn}>
+        <Text style={styles.buttonText}>Войти</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={handleSignUp}>
+        <Text style={styles.buttonText}>Зарегистрироваться</Text>
+      </TouchableOpacity>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#fff',
   },
   input: {
     width: '80%',
@@ -60,6 +79,21 @@ const styles = StyleSheet.create({
     padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: '#ccc',
+    backgroundColor: '#B5AE08',
+    borderRadius: 5,
+  },
+  button: {
+    backgroundColor: '#00952A',
+    width: '80%',
+    padding: 15,
+    borderRadius: 5,
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
   error: {
     color: 'red',

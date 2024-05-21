@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import React, { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
@@ -6,10 +7,9 @@ import {
   Button as RNButton,
   StyleSheet,
 } from 'react-native';
-
 import axios from 'axios';
 
-const Lab2 = () => {
+function Lab2() {
   const [activity, setActivity] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -41,7 +41,7 @@ const Lab2 = () => {
       )}
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {

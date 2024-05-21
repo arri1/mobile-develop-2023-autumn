@@ -1,10 +1,16 @@
 /* eslint-disable no-shadow */
 import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet, Text } from 'react-native';
+import {
+  View,
+  TextInput,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { auth } from '../firebase';
 
-const RegisterScreen = () => {
+function RegisterScreen() {
   const navigation = useNavigation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -14,9 +20,7 @@ const RegisterScreen = () => {
     auth
       .createUserWithEmailAndPassword(email, password)
       .then(() => {
-        if (navigation.isReady()) {
-          navigation.navigate('Auth');
-        }
+        navigation.navigate('Auth');
       })
       .catch((error) => {
         setError(error.message);
@@ -40,29 +44,41 @@ const RegisterScreen = () => {
         secureTextEntry
       />
       {error && <Text style={styles.error}>{error}</Text>}
-      <Button title="Зарегистрироваться" onPress={handleSignUp} />
+      <TouchableOpacity style={styles.button} onPress={handleSignUp}>
+        <Text style={styles.buttonText}>Зарегистрироваться</Text>
+      </TouchableOpacity>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 20,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
+    backgroundColor: '#fff',
   },
   input: {
-    width: '100%',
+    width: '80%',
     marginBottom: 10,
     padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: '#ccc',
+    backgroundColor: '#B5AE08',
+    borderRadius: 5,
+  },
+  button: {
+    backgroundColor: '#00952A',
+    width: '80%',
+    padding: 15,
+    borderRadius: 5,
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
   error: {
     color: 'red',

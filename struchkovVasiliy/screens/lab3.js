@@ -1,13 +1,19 @@
 /* eslint-disable no-restricted-globals */
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useMemo, useCallback } from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
 
-const Lab3 = () => {
+function Lab3() {
   const [number, setNumber] = useState(1);
   const [factorialWithoutMemo, setFactorialWithoutMemo] = useState(1);
   const [factorialWithMemo, setFactorialWithMemo] = useState(1);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const calculateFactorial = useCallback((n) =>
     n <= 1 ? 1 : n * calculateFactorial(n - 1)
   );
@@ -28,14 +34,14 @@ const Lab3 = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Наберите число (0-40):</Text>
+      <Text style={styles.title}>Введите число от 0-40:</Text>
       <TextInput
         style={styles.input}
         keyboardType="numeric"
         value={String(number)}
         onChangeText={(text) => {
           if (text === '') {
-            setNumber('');
+            setNumber(' ');
           } else {
             const num = parseInt(text, 10);
             if (!isNaN(num) && num >= 0 && num <= 40) {
@@ -44,8 +50,18 @@ const Lab3 = () => {
           }
         }}
       />
-      <Button title="Вычислить без Memo" onPress={handleCalculateWithoutMemo} />
-      <Button title="Вычислить с Memo" onPress={handleCalculateWithMemo} />
+      <TouchableOpacity
+        style={[styles.button, styles.calculateButton]}
+        onPress={handleCalculateWithoutMemo}
+      >
+        <Text style={styles.buttonText}>Вычислить без Memo</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={[styles.button, styles.calculateButton]}
+        onPress={handleCalculateWithMemo}
+      >
+        <Text style={styles.buttonText}>Вычислить с Memo</Text>
+      </TouchableOpacity>
       <Text style={styles.resultText}>
         Факториал без useMemo: {factorialWithoutMemo}
       </Text>
@@ -54,7 +70,7 @@ const Lab3 = () => {
       </Text>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -70,6 +86,23 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
     marginBottom: 20,
+  },
+  button: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 5,
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    elevation: 3,
+    backgroundColor: 'black',
+  },
+  calculateButton: {
+    marginTop: 10,
+  },
+  buttonText: {
+    color: 'white',
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
   },
   title: {
     fontSize: 18,
