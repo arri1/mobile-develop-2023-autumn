@@ -62,7 +62,7 @@ import {
   
     return ( 
         <View style={styles.container}>  
-            <Text style={styles.title}></Text> 
+            <Text style={styles.title}></Text>
             <TextInput 
                 style={styles.input} 
                 placeholder="TO DO:"
@@ -103,16 +103,17 @@ import {
         color: "black", 
     }, 
     input: { 
-        borderWidth: 2, 
+        borderWidth: 1, 
         borderColor: "black", 
-        padding: 10, 
+        padding: 11, 
+        paddingLeft: 20,
         marginBottom: 10, 
         borderRadius: 30, 
         fontSize: 18, 
     }, 
     addButton: { 
         backgroundColor: "black", 
-        padding: 10, 
+        padding: 12, 
         borderRadius: 30, 
         marginBottom: 10, 
     }, 

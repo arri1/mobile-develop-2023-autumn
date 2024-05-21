@@ -6,26 +6,29 @@ export default function CounterPage() {
   const [count, setCount] = useState(0);
   return (
     <View style={styles.container}>
-      <Text style={{ fontSize: 50 }}>{count}</Text>
+      <Text style={{ fontSize: 70, margin: 30 }}>{count}</Text>
 
       <View style={styles.btnContainer}>
         <Button
           onPress={() => setCount(count + 1)}
           title="+1"
-          color="rgb(0, 0, 0)"
-        />
-        <Button
-          onPress={() => setCount(count - 1)}
-          title="-1"
-          color="rgb(0, 0, 0)"
-        />
-        <Button
-          onPress={() => setCount(0)}
-          title="Restart"
-          color="rgb(0, 0, 0)"
+          color="white"
         />
       </View>
-
+      <View style={styles.btnContainer}>
+      <Button
+          onPress={() => setCount(count - 1)}
+          title="-1"
+          color="white"
+        />
+      </View>
+      <View style={styles.btnContainer}>
+      <Button
+          onPress={() => setCount(0)}
+          title="Restart"
+          color="white"
+        />
+      </View>
       <StatusBar style="auto" />
     </View>
   );
@@ -39,8 +42,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   btnContainer: {
-    margin: 20,
     flexDirection: "row",
-    justifyContent: "space-between",
+    backgroundColor: "black",
+    padding: 8, 
+    borderRadius: 30, 
+    marginBottom: 10, 
+    width: 200,
+    justifyContent: "center",
   },
 });
