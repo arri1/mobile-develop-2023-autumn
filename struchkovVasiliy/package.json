@@ -13,16 +13,22 @@
     "fix:lintPrettier": "npm prettierFixAll && npm lintFixAll"
   },
   "dependencies": {
+    "@apollo/client": "^3.8.8",
     "@react-navigation/bottom-tabs": "^6.5.11",
+    "@react-navigation/native": "^6.1.17",
+    "@react-navigation/stack": "^6.3.20",
     "axios": "^1.6.2",
-    "expo": "^51.0.5",
-    "expo-status-bar": "~1.6.0",
+    "expo": "~51.0.6",
+    "expo-status-bar": "~1.12.1",
+    "firebase": "^10.11.1",
+    "graphql": "^15.8.0",
     "react": "18.2.0",
-    "react-native": "0.72.10",
+    "react-native": "^0.74.1",
+    "react-native-gesture-handler": "~2.16.1",
     "react-native-video": "^5.2.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0",
+    "@babel/core": "^7.24.0",
     "eslint": "^8.57.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^9.1.0",
