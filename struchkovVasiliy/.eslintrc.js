@@ -13,10 +13,11 @@ module.exports = {
     'react/function-component-definition': 'off',
     'no-param-reassign': 'off',
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
-
     'no-use-before-define': ['error', { variables: false }],
-
-    'react/prop-types': ['error', { ignore: ['navigation', 'navigation.navigate'] }],
+    'react/prop-types': [
+      'error',
+      { ignore: ['navigation', 'navigation.navigate'] },
+    ],
 
     'react-native/no-inline-styles': 'error',
 
