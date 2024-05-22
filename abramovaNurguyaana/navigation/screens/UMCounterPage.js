@@ -26,10 +26,14 @@ const UMCounterPage = () => {
       <Text style={styles.text}>Count: {count1}</Text>
       <Text style={styles.text}>Memoized Value: {updatedCount2}</Text>
       <View style={styles.btnContainer}>
-        <Button title="Increase counter" onPress={incrementCount} color="white"/>
+        <Button
+          title="Increase counter"
+          onPress={incrementCount}
+          color="white"
+        />
       </View>
       <View style={styles.btnContainer}>
-        <Button title="Restart" onPress={resetCounters} color="white"/>
+        <Button title="Restart" onPress={resetCounters} color="white" />
       </View>
     </View>
   );
@@ -46,13 +50,13 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   btnContainer: {
-    flexDirection: "row",
-    backgroundColor: "black",
-    padding: 6, 
-    borderRadius: 30, 
-    marginBottom: 10, 
+    flexDirection: 'row',
+    backgroundColor: 'black',
+    padding: 6,
+    borderRadius: 30,
+    marginBottom: 10,
     width: 200,
-    justifyContent: "center",
+    justifyContent: 'center',
   },
 });
 

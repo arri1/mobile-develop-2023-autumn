@@ -5,14 +5,10 @@ export default function ProfilePage() {
   return (
     <View style={styles.container}>
       <View style={styles.btnContainer}>
-      <Button
-          title="Logout"
-          color="white"
-        />
+        <Button title="Logout" color="white" />
       </View>
       <StatusBar style="auto" />
     </View>
-    
   );
 }
 
@@ -24,13 +20,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   btnContainer: {
-    marginTop: 25, 
-    flexDirection: "row",
-    backgroundColor: "black",
-    padding: 5, 
-    borderRadius: 30, 
-    marginBottom: 20, 
+    marginTop: 25,
+    flexDirection: 'row',
+    backgroundColor: 'black',
+    padding: 5,
+    borderRadius: 30,
+    marginBottom: 20,
     width: 180,
-    justifyContent: "center",
+    justifyContent: 'center',
   },
 });

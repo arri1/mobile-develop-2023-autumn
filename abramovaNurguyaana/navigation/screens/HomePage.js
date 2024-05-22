@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function HomePage() {
   return (
     <View style={styles.container}>
-      <Text style={{ fontSize: 28, fontWeight: 'bold'}}>Helllo</Text>
+      <Text style={{ fontSize: 28, fontWeight: 'bold' }}>Helllo</Text>
       <StatusBar style="auto" />
     </View>
   );

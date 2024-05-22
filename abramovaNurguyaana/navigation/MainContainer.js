@@ -9,11 +9,11 @@ import ToDoPage from './screens/ToDoPage';
 import UMCounterPage from './screens/UMCounterPage';
 import ProfilePage from './screens/ProfilePage';
 
-const HomePageName = "Home";
-const CounterPageName = "Counter";
-const ToDoPageName = "ToDo";
-const UMCounterPageName = "UseMemo";
-const ProfilePageName = "Profile";
+const HomePageName = 'Home';
+const CounterPageName = 'Counter';
+const ToDoPageName = 'ToDo';
+const UMCounterPageName = 'UseMemo';
+const ProfilePageName = 'Profile';
 
 const Tab = createBottomTabNavigator();
 
@@ -37,23 +37,21 @@ function MainContainer() {
               iconName = focused ? 'add-circle' : 'add-circle-outline';
             } else if (rn === ProfilePageName) {
               iconName = focused ? 'person' : 'person-outline';
-            } 
+            }
 
             return <Ionicons name={iconName} size={size} color={color} />;
           },
         })}
         tabBarOptions={{
-           activeTintColor: 'black',
-           inactiveTintColor: 'grey'
+          activeTintColor: 'black',
+          inactiveTintColor: 'grey',
         }}
-        >
-
+      >
         <Tab.Screen name={HomePageName} component={HomePage} />
         <Tab.Screen name={CounterPageName} component={CounterPage} />
-        <Tab.Screen name={ToDoPageName} component={ToDoPage} />   
-        <Tab.Screen name={UMCounterPageName} component={UMCounterPage} /> 
-        <Tab.Screen name={ProfilePageName} component={ProfilePage} />   
-
+        <Tab.Screen name={ToDoPageName} component={ToDoPage} />
+        <Tab.Screen name={UMCounterPageName} component={UMCounterPage} />
+        <Tab.Screen name={ProfilePageName} component={ProfilePage} />
       </Tab.Navigator>
     </NavigationContainer>
   );
