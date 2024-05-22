@@ -6,10 +6,12 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import HomePage from './screens/HomePage';
 import CounterPage from './screens/CounterPage';
 import ToDoPage from './screens/ToDoPage';
+import UMCounterPage from './screens/UMCounterPage';
 
 const HomePageName = 'Home';
 const CounterPageName = 'Counter';
 const ToDoPageName = 'ToDo';
+const UMCounterPageName = 'UseMemo';
 
 const Tab = createBottomTabNavigator();
 
@@ -29,6 +31,8 @@ function MainContainer() {
               iconName = focused ? 'calculator' : 'calculator-outline';
             } else if (rn === ToDoPageName) {
               iconName = focused ? 'checkbox' : 'checkbox-outline';
+            } else if (rn === UMCounterPageName) {
+              iconName = focused ? 'add-circle' : 'add-circle-outline';
             }
 
             return <Ionicons name={iconName} size={size} color={color} />;
@@ -42,6 +46,7 @@ function MainContainer() {
         <Tab.Screen name={HomePageName} component={HomePage} />
         <Tab.Screen name={CounterPageName} component={CounterPage} />
         <Tab.Screen name={ToDoPageName} component={ToDoPage} />
+        <Tab.Screen name={UMCounterPageName} component={UMCounterPage} />
       </Tab.Navigator>
     </NavigationContainer>
   );
