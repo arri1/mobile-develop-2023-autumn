@@ -5,9 +5,11 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import HomePage from './screens/HomePage';
 import CounterPage from './screens/CounterPage';
+import ToDoPage from './screens/ToDoPage';
 
 const HomePageName = 'Home';
 const CounterPageName = 'Counter';
+const ToDoPageName = 'ToDo';
 
 const Tab = createBottomTabNavigator();
 
@@ -25,6 +27,8 @@ function MainContainer() {
               iconName = focused ? 'home' : 'home-outline';
             } else if (rn === CounterPageName) {
               iconName = focused ? 'calculator' : 'calculator-outline';
+            } else if (rn === ToDoPageName) {
+              iconName = focused ? 'checkbox' : 'checkbox-outline';
             }
 
             return <Ionicons name={iconName} size={size} color={color} />;
@@ -37,6 +41,7 @@ function MainContainer() {
       >
         <Tab.Screen name={HomePageName} component={HomePage} />
         <Tab.Screen name={CounterPageName} component={CounterPage} />
+        <Tab.Screen name={ToDoPageName} component={ToDoPage} />
       </Tab.Navigator>
     </NavigationContainer>
   );
