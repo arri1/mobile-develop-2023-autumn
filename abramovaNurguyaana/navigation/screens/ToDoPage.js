@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -6,27 +5,25 @@ import {
   TouchableOpacity,
   FlatList,
   StyleSheet,
-  Button
-} from "react-native";
+} from 'react-native';
+import React, { useState } from 'react';
 
-const App = () => {
-  const [task, setTask] = useState("");
+const ToDoPage = () => {
+  const [task, setTask] = useState('');
   const [tasks, setTasks] = useState([]);
   const [editIndex, setEditIndex] = useState(-1);
 
   const handleAddTask = () => {
     if (task) {
       if (editIndex !== -1) {
-        // Edit existing task
         const updatedTasks = [...tasks];
         updatedTasks[editIndex] = task;
         setTasks(updatedTasks);
         setEditIndex(-1);
       } else {
-        // Add new task
         setTasks([...tasks, task]);
       }
-      setTask("");
+      setTask('');
     }
   };
 
@@ -47,39 +44,27 @@ const App = () => {
       <Text style={styles.itemList}>{item}</Text>
       <View style={styles.taskButtons}>
         <TouchableOpacity onPress={() => handleEditTask(index)}>
-          <Text style={styles.editButton}>Поменять</Text>
+          <Text style={styles.editButton}>Edit</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => handleDeleteTask(index)}>
-          <Text style={styles.deleteButton}>Удалить</Text>
+          <Text style={styles.deleteButton}>Delete</Text>
         </TouchableOpacity>
       </View>
     </View>
   );
-
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {}, [count]);
-
-  const increment = () => {
-    setCount(count + 1);
-  };
-
-  const decrement = () => {
-    setCount(count - 1);
-  };
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}></Text>
       <TextInput
         style={styles.input}
-        placeholder="Введите задачу"
+        placeholder="TO DO:"
         value={task}
         onChangeText={(text) => setTask(text)}
       />
       <TouchableOpacity style={styles.addButton} onPress={handleAddTask}>
         <Text style={styles.addButtonText}>
-          {editIndex !== -1 ? "Обновить задачу" : "Добавить задачу"}
+          {editIndex !== -1 ? 'Update' : 'Add'}
         </Text>
       </TouchableOpacity>
       <FlatList
@@ -87,13 +72,6 @@ const App = () => {
         renderItem={renderItem}
         keyExtractor={(item, index) => index.toString()}
       />
-
-      <View>
-        <Text>Счетчик</Text>
-        <Text>Счет: {count}</Text>
-        <Button title="Плюс 1" onPress={increment} />
-        <Button title="Минус 1" onPress={decrement} />
-      </View>
     </View>
   );
 };
@@ -106,39 +84,39 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginBottom: 20,
   },
   heading: {
     fontSize: 30,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginBottom: 7,
-    color: "green",
+    color: 'black',
   },
   input: {
-    borderWidth: 3,
-    borderColor: "#ccc",
-    padding: 10,
+    borderWidth: 1,
+    borderColor: 'black',
+    padding: 11,
+    paddingLeft: 20,
     marginBottom: 10,
-    borderRadius: 10,
+    borderRadius: 30,
     fontSize: 18,
   },
   addButton: {
-    backgroundColor: "green",
-    padding: 10,
-    borderRadius: 5,
+    backgroundColor: 'black',
+    padding: 12,
+    borderRadius: 30,
     marginBottom: 10,
   },
   addButtonText: {
-    color: "white",
-    fontWeight: "bold",
-    textAlign: "center",
+    color: 'white',
+    textAlign: 'center',
     fontSize: 18,
   },
   task: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     marginBottom: 15,
     fontSize: 18,
   },
@@ -146,19 +124,19 @@ const styles = StyleSheet.create({
     fontSize: 19,
   },
   taskButtons: {
-    flexDirection: "row",
+    flexDirection: 'row',
   },
   editButton: {
     marginRight: 10,
-    color: "green",
-    fontWeight: "bold",
+    color: 'black',
+    fontWeight: 'bold',
     fontSize: 18,
   },
   deleteButton: {
-    color: "red",
-    fontWeight: "bold",
+    color: 'black',
+    fontWeight: 'bold',
     fontSize: 18,
   },
 });
 
-export default App;
+export default ToDoPage;
