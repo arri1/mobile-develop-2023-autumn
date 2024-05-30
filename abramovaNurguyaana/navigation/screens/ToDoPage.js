@@ -110,7 +110,6 @@ const styles = StyleSheet.create({
   },
   addButtonText: {
     color: 'white',
-    fontWeight: 'bold',
     textAlign: 'center',
     fontSize: 18,
   },
