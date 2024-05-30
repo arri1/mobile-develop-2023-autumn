@@ -11,20 +11,30 @@ import {
   TouchableOpacity,
 } from "react-native";
 
+import ToDoList from "./components/ToDoList";
 
 export default function App() {
   const [count, setCount] = useState(0);
-  const baseURL = "https://jsonplaceholder.typicode.com/posts/1";
-  const [post, setPost] = React.useState(null);
 
-  React.useEffect(() => {
-    axios.get(baseURL).then((response) => {
-      setPost(response.data);
-    });
-  }, []);
+  const [tasks, setTasks] = useState([]);
+  const [text, setText] = useState("");
 
-  if (!post) return null;
+  const onAdd = () => {
+    setTasks((prevState) => {
+      const tasks = [...prevState];
+      tasks.push({ id: tasks.length, title: text, done: false });
+      return tasks;
+    }); // Добавляем новую задачу 
 
+    setText(""); //Очищаем поле
+  };
+
+  const toggle = (id) => {
+    const dublicateTasks = [...tasks];
+    const taskIndex = tasks.findIndex((task) => task.id === id);
+    dublicateTasks[taskIndex].done = !dublicateTasks[taskIndex].done;
+    setTasks(dublicateTasks);
+  };
 
   return (
     <View style={styles.container}>
@@ -60,9 +70,9 @@ export default function App() {
         }}
         title={'Reset'}
       />
-      <Text>{post.title}</Text>
-      <Text>{post.body}</Text>
-
+      <TextInput style={styles.input} placeholder="Enter task" value={text} onChangeText={setText} />
+        <Button title={"Add"} onPress={onAdd} />
+        <ToDoList tasks={tasks} toggle={toggle} />
       <StatusBar style = 'auto'/>
     </View>
   );
@@ -79,4 +89,9 @@ const styles = StyleSheet.create({
   image: {
     marginBottom: 50,
   },
+  input: {
+    padding: 10,
+    marginBottom: 10,
+    borderBottomWidth: 1    
+  }
 });
